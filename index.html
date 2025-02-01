@@ -3,26 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIARIO</title>
+    <title>DIARIO - Fanzine</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
-        h1 { color: #333; }
-        p { font-size: 18px; color: #666; }
-        .paypal-button { margin-top: 20px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 20px 0;
+        }
+        .price {
+            font-size: 1.5rem;
+            color: #27ae60;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        .paypal-button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #0070ba;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .paypal-button:hover {
+            background-color: #005f8d;
+        }
+        .paypal-button:active {
+            background-color: #004c72;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>DIARIO - Enero 2025</h1>
-        <p>Esto no es un diario pero trata de mí.</p>
-        <p>3,50€</p>
+        <p>Esto no es un diario, pero trata de mí. Una obra personal y única.</p>
+        <p class="price">3,50€</p>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_s-xclick" />
-          <input type="hidden" name="hosted_button_id" value="3L4EU5A59PTLE" />
-          <input type="hidden" name="currency_code" value="EUR" />
-          <input type="image" src="https://www.paypalobjects.com/es_ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal, la forma rápida y segura de pagar en Internet." alt="Comprar ahora" />
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="3L4EU5A59PTLE" />
+            <input type="hidden" name="currency_code" value="EUR" />
+            <input type="image" src="https://www.paypalobjects.com/es_ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal, la forma rápida y segura de pagar en Internet." alt="Comprar ahora" class="paypal-button" />
         </form>
+        <footer>
+            <p>Gracias por apoyar proyectos independientes.</p>
+        </footer>
     </div>
 </body>
 </html>
