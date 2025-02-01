@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIARIO</title>
+    <title>DIARIO - Fanzine</title>
     <style>
         * {
             margin: 0;
@@ -11,20 +11,34 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fafafa;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            padding: 40px 0;
+            background-color: #2d2d2d;
+            color: white;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.2rem;
         }
         nav {
-            background-color: #0070ba;
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
             width: 100%;
-            padding: 15px 0;
-            text-align: center;
         }
         nav a {
             color: white;
@@ -36,39 +50,58 @@
         nav a:hover {
             text-decoration: underline;
         }
-        .container {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 800px;
-            padding: 30px;
-            margin-top: 20px;
+        .content {
+            width: 80%;
+            max-width: 1200px;
+            margin-top: 40px;
             text-align: center;
-            transition: transform 0.3s ease;
         }
-        .container:hover {
-            transform: scale(1.02);
+        .home {
+            background-color: #fff;
+            padding: 60px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #333;
+        .home h2 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 600;
+            margin-bottom: 20px;
         }
-        p {
-            font-size: 1.1rem;
-            color: #555;
-            margin: 20px 0;
+        .home p {
+            font-size: 1.2rem;
+            color: #666;
         }
-        .price {
+        .shop {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            background-color: #fff;
+            width: 30%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .product-card h3 {
             font-size: 1.5rem;
+            margin-top: 15px;
+        }
+        .product-card .price {
+            font-size: 1.3rem;
             color: #27ae60;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin: 10px 0;
         }
         .paypal-button {
-            margin-top: 20px;
             padding: 12px 30px;
             background-color: #0070ba;
             color: white;
@@ -81,17 +114,24 @@
         .paypal-button:hover {
             background-color: #005f8d;
         }
-        .paypal-button:active {
-            background-color: #004c72;
-        }
         footer {
-            margin-top: 20px;
+            width: 100%;
+            background-color: #2d2d2d;
+            color: white;
+            text-align: center;
+            padding: 20px;
             font-size: 0.9rem;
-            color: #888;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
+    <header>
+        <h1>DIARIO</h1>
+        <p>Fanzine de autor - Enero 2025</p>
+    </header>
 
     <!-- Navbar -->
     <nav>
@@ -99,28 +139,36 @@
         <a href="#shop">Shop</a>
     </nav>
 
-    <!-- Home Section -->
-    <div id="home" class="container">
-        <h1>DIARIO - Enero 2025</h1>
-        <p>Esto no es un diario, pero trata de mí.</p>
-        <p>Explora el contenido de mi fanzine y conoce más sobre este proyecto.</p>
-        <footer>
-            <p>Gracias por apoyar proyectos independientes.</p>
-        </footer>
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- Home Section -->
+        <section id="home" class="home">
+            <h2>Bienvenidos a DIARIO</h2>
+            <p>DIARIO es un fanzine que no sigue las reglas. Cada página es una obra personal, creada con pasión, historia y mucha reflexión. Conoce este proyecto único que busca romper barreras y tocar el alma de quien lo lee.</p>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="shop">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300" alt="Fanzine DIARIO">
+                <h3>Fanzine DIARIO - Enero 2025</h3>
+                <p class="price">3,50€</p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick" />
+                    <input type="hidden" name="hosted_button_id" value="3L4EU5A59PTLE" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="image" src="https://www.paypalobjects.com/es_ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal, la forma rápida y segura de pagar en Internet." alt="Comprar ahora" class="paypal-button" />
+                </form>
+            </div>
+        </section>
+
     </div>
 
-    <!-- Shop Section -->
-    <div id="shop" class="container">
-        <h1>Tienda</h1>
-        <p>Compra una copia del fanzine DIARIO. Cada ejemplar es único.</p>
-        <p class="price">3,50€</p>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="3L4EU5A59PTLE" />
-            <input type="hidden" name="currency_code" value="EUR" />
-            <input type="image" src="https://www.paypalobjects.com/es_ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal, la forma rápida y segura de pagar en Internet." alt="Comprar ahora" class="paypal-button" />
-        </form>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>Gracias por apoyar el arte independiente. | © 2025 DIARIO</p>
+    </footer>
 
 </body>
 </html>
