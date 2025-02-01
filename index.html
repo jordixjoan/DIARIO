@@ -32,6 +32,7 @@
             z-index: 1000; /* Asegura que el encabezado esté siempre por encima del contenido */
         }
         header h1 {
+            font-family: 'Castellar', serif; /* Fuente Castellar */
             font-size: 3rem;
             margin-bottom: 10px;
         }
@@ -106,4 +107,74 @@
             font-weight: bold;
             margin: 10px 0;
         }
-        .paypal-b
+        .paypal-button {
+            padding: 12px 30px;
+            background-color: #0070ba;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .paypal-button:hover {
+            background-color: #005f8d;
+        }
+        footer {
+            width: 100%;
+            background-color: #2d2d2d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>DIARIO</h1>
+        <p>Fanzine de autor - Enero 2025</p>
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- Home Section -->
+        <section id="home" class="home">
+            <h2>Bienvenidos a DIARIO</h2>
+            <p>DIARIO es un fanzine que no sigue las reglas. Cada página es una obra personal, creada con pasión, historia y mucha reflexión. Conoce este proyecto único que busca romper barreras y tocar el alma de quien lo lee.</p>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="shop">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300" alt="Fanzine DIARIO">
+                <h3>Fanzine DIARIO - Enero 2025</h3>
+                <p class="price">3,50€</p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick" />
+                    <input type="hidden" name="hosted_button_id" value="3L4EU5A59PTLE" />
+                    <input type="hidden" name="currency_code" value="EUR" />
+                    <input type="image" src="https://www.paypalobjects.com/es_ES/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" title="PayPal, la forma rápida y segura de pagar en Internet." alt="Comprar ahora" class="paypal-button" />
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Gracias por apoyar el arte independiente. | © 2025 DIARIO</p>
+    </footer>
+
+</body>
+</html>
