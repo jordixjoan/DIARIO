@@ -85,12 +85,13 @@
             margin-bottom: 40px;
         }
         .product-card {
-            background-color: #fff;
+            background-color: #C0C0C0; /* Fondo plateado */
             width: 30%;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: left;
+            position: relative;
         }
         .product-card img {
             width: 100%;
@@ -129,6 +130,17 @@
             font-size: 0.9rem;
             margin-top: 40px;
         }
+        .new-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -156,6 +168,7 @@
         <!-- Shop Section -->
         <section id="shop" class="shop">
             <div class="product-card">
+                <div class="new-badge">NEW</div>
                 <img src="1.jpg" alt="DIARIO Enero 2025" />
                 <h3>DIARIO - Enero 2025</h3>
                 <h4>Esto no es un diario pero trata de mí.</h4>
