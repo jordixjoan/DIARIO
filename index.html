@@ -10,9 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html {
-            scroll-padding-top: 80px; /* Ajusta según la altura del header */
-        }
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
@@ -34,13 +31,6 @@
             text-align: center;
             z-index: 1000; /* Asegura que el encabezado esté siempre por encima del contenido */
         }
-        .header-container {
-            display: flex;
-            align-items: center;
-            width: 80%; /* Mismo ancho que los demás div */
-            max-width: 1200px;
-        }
-        
         header h1 {
             font-family: 'Castellar', sans-serif; /* Fuente Castellar */
             font-size: 3rem;
@@ -50,21 +40,6 @@
         }
         header p {
             font-size: 1.2rem;
-        }
-        nav {
-            display: flex;
-            gap: 20px;
-            margin-left: 30px; /* Alinea el nav a la izquierda */
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
         }
         .content {
             width: 80%;
@@ -117,6 +92,10 @@
             font-size: 1.5rem;
             margin-top: 15px;
         }
+        .product-card h4 {
+            font-size: 1rem;
+            color: #666;
+        }
         .product-card .price {
             font-size: 1.3rem;
             color: #27ae60;
@@ -162,13 +141,7 @@
 
     <!-- Header -->
     <header>
-        <div class="header-container">
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#shop">Shop</a>
-            </nav>
             <h1>DIARIO</h1>
-        </div>
     </header>
 
     <!-- Main Content -->
@@ -186,7 +159,7 @@
                 <div class="new-badge">NUEVO</div>
                 <img src="1.png" alt="DIARIO Enero 2025" />
                 <h3>DIARIO - Enero 2025</h3>
-                <h4 color="#666">Esto no es un diario pero trata de mí.</h4>
+                <h4>Esto no es un diario pero trata de mí.</h4>
                 <p class="price">3,50€</p>
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                     <input type="hidden" name="cmd" value="_s-xclick" />
