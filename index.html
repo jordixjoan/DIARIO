@@ -15,13 +15,12 @@
             background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding-top: 80px; /* Asegura que el contenido no quede oculto por el header fijo */
+            padding-top: 80px;
         }
         header {
-            position: fixed; /* Hace que el encabezado sea fijo */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -29,34 +28,28 @@
             background-color: #2d2d2d;
             color: white;
             text-align: center;
-            z-index: 1000; /* Asegura que el encabezado esté siempre por encima del contenido */
+            z-index: 1000;
         }
         header h1 {
-            font-family: 'Castellar', sans-serif; /* Fuente Castellar */
+            font-family: 'Castellar', sans-serif;
             font-size: 3rem;
-            margin-bottom: 5px;
-            text-align: center;
-            flex-grow: 1; /* Mantiene el título centrado */
-        }
-        header p {
-            font-size: 1.2rem;
+            margin: 0;
         }
         .content {
             width: 80%;
             max-width: 1200px;
-            margin-top: 40px;
             text-align: center;
         }
         .home {
             background-color: #fff;
-            padding: 60px;
-            margin-bottom: 40px;
+            padding: 40px;
+            margin: 40px 0;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .home h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 15px;
         }
         .home p {
             font-size: 1.2rem;
@@ -64,33 +57,28 @@
         }
         .shop {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 30px;
-            margin-bottom: 40px;
         }
         .product-card {
-            background-color: #C0C0C0; /* Fondo plateado */
-            width: 30%;
+            background-color: #C0C0C0;
+            width: 300px;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            text-align: center;
             position: relative;
-        }
-        .product-card a button {
-            display: flex;
-            justify-content: center; /* Centra horizontalmente */
         }
         .product-card img {
             width: 100%;
             border-radius: 8px;
             object-fit: cover;
-            mix-blend-mode: multiply; /* O prueba 'darken' si no funciona bien */
+            mix-blend-mode: multiply;
         }
         .product-card h3 {
             font-size: 1.5rem;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         .product-card h4 {
             font-size: 1rem;
@@ -103,32 +91,9 @@
             margin: 10px 0;
         }
         .product-card .price2 {
-            font-size: 10px;
+            font-size: 0.9rem;
             color: #2d2d2d;
             font-weight: bold;
-            margin: 10px 0;
-        }
-        .paypal-button {
-            padding: 12px 30px;
-            background-color: #C0C0C0;
-            color: white;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .paypal-button:hover {
-            background-color: #2d2d2d;
-        }
-        footer {
-            width: 100%;
-            background-color: #2d2d2d;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            margin-top: 40px;
         }
         .new-badge {
             position: absolute;
@@ -141,47 +106,46 @@
             padding: 5px 10px;
             border-radius: 5px;
         }
+        footer {
+            width: 100%;
+            background-color: #2d2d2d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
-            <h1>DIARIO</h1>
+        <h1>DIARIO</h1>
     </header>
 
-    <!-- Main Content -->
     <div class="content">
-
-        <!-- Home Section -->
-        <section id="home" class="home">
+        <section class="home">
             <h2>Bienvenidos a DIARIO</h2>
-            <p>DIARIO es un fanzine que no sigue las reglas. Cada página es una obra personal, creada con pasión, historia y mucha reflexión. Conoce este proyecto único que busca romper barreras y tocar el alma de quien lo lee.</p>
+            <p>DIARIO es un fanzine que no sigue las reglas. Cada página es una obra personal, creada con pasión, historia y mucha reflexión.</p>
         </section>
 
-        <!-- Shop Section -->
-        <section id="shop" class="shop">
+        <section class="shop">
             <div class="product-card">
                 <div class="new-badge">NUEVO</div>
-                <img src="1.png" alt="DIARIO Enero 2025" />
+                <img src="1.png" alt="DIARIO Enero 2025">
                 <h3>DIARIO - Enero 2025</h3>
                 <h4>Esto no es un diario pero trata de mí.</h4>
-                <p class="price">3,50€</p><p class="price2">+2,99€ gastos gestión y envío.</p>
-                <script async
-                  src="https://js.stripe.com/v3/buy-button.js">
-                </script>
-                
+                <p class="price">3,50€</p>
+                <p class="price2">+2,99€ gastos gestión y envío.</p>
+                <script async src="https://js.stripe.com/v3/buy-button.js"></script>
                 <stripe-buy-button
-                  buy-button-id="buy_btn_1QoNYnKFGE8wIMqggw6W6wg7"
-                  publishable-key="pk_live_51QoMfzKFGE8wIMqgKaTP1BLeIseidBMhY3bEzanIoEFL8ywyuiobB54Xr3nBm5eoA9QbzD1ECEr7OeOWP7Ixlc7f00eXwqBtad"
-                >
+                    buy-button-id="buy_btn_1QoNYnKFGE8wIMqggw6W6wg7"
+                    publishable-key="pk_live_51QoMfzKFGE8wIMqgKaTP1BLeIseidBMhY3bEzanIoEFL8ywyuiobB54Xr3nBm5eoA9QbzD1ECEr7OeOWP7Ixlc7f00eXwqBtad">
                 </stripe-buy-button>
             </div>
         </section>
-
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>Gracias por apoyar el arte independiente. | © 2025 DIARIO</p>
     </footer>
