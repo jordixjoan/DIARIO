@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc; }
+        .cart-item img { width: 50px; }
+        button { margin: 10px; padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    <div id="cart-items"></div>
+    <button onclick="checkout()">Finalizar Compra</button>
+    <button onclick="clearCart()">Vaciar Carrito</button>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        function renderCart() {
+            let cartHTML = "";
+            cart.forEach((item, index) => {
+                cartHTML += `<div class="cart-item">
+                                <img src="${item.image}" alt="${item.name}">
+                                <span>${item.name} - €${item.price.toFixed(2)}</span>
+                                <button onclick="removeItem(${index})">Eliminar</button>
+                            </div>`;
+            });
+            document.getElementById("cart-items").innerHTML = cartHTML || "<p>El carrito está vacío.</p>";
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem("cart");
+            cart = [];
+            renderCart();
+        }
+
+        function checkout() {
+            // Aquí puedes integrar Stripe Checkout
+            alert("Redirigiendo a pago...");
+        }
+
+        renderCart();
+    </script>
+</body>
+</html>
