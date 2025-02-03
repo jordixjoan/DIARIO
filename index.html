@@ -63,8 +63,8 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
             position: relative;
+            text-align: left;
         }
         .product-card img {
             width: 100%;
@@ -72,27 +72,24 @@
             object-fit: cover;
             mix-blend-mode: multiply;
         }
+        .product-card h3, .product-card h4, .product-card p {
+            text-align: left;
+        }
         .product-card h3 {
             font-size: 1.5rem;
             margin-top: 15px;
         }
         .product-card h4 {
-            display: flex;
-            justify-content: left;
             font-size: 1rem;
             color: #666;
         }
         .product-card .price {
-            display: flex;
-            justify-content: left;
             font-size: 1.3rem;
             color: #27ae60;
             font-weight: bold;
             margin: 10px 0;
         }
         .product-card .price2 {
-            display: flex;
-            justify-content: left;
             font-size: 10px;
             color: #2d2d2d;
             font-weight: bold;
@@ -101,7 +98,7 @@
         .product-card .button-container {
             display: flex;
             justify-content: center;
-            align-items: left;
+            align-items: center;
             margin-top: 15px;
             width: 100%;
         }
@@ -148,7 +145,7 @@
                 <img src="1.png" alt="DIARIO Enero 2025" />
                 <h3>DIARIO - Enero 2025</h3>
                 <h4>Esto no es un diario pero trata de mí.</h4>
-                <p class="price">3,50€</p><p class="price2">+1,99€ gastos gestión y envío.</p>
+                <p class="price">3,50€</p><p class="price2">+2,99€ gastos gestión y envío.</p>
                 <div class="button-container">
                     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
                     <stripe-buy-button
