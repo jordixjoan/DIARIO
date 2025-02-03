@@ -167,9 +167,15 @@
                 <h3>DIARIO - Enero 2025</h3>
                 <h4>Esto no es un diario pero trata de mí.</h4>
                 <p class="price">3,50€</p><p class="price2">+2,99€ gastos gestión y envío.</p>
-                <a href="https://buy.stripe.com/fZe8zS3cs2Encj66oo">
-                    <button>Comprar</button>
-                </a>
+                <script async
+                  src="https://js.stripe.com/v3/buy-button.js">
+                </script>
+                
+                <stripe-buy-button
+                  buy-button-id="buy_btn_1QoNYnKFGE8wIMqggw6W6wg7"
+                  publishable-key="pk_live_51QoMfzKFGE8wIMqgKaTP1BLeIseidBMhY3bEzanIoEFL8ywyuiobB54Xr3nBm5eoA9QbzD1ECEr7OeOWP7Ixlc7f00eXwqBtad"
+                >
+                </stripe-buy-button>
             </div>
         </section>
 
