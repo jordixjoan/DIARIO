@@ -128,6 +128,7 @@
 
     <header>
         <h1>DIARIO</h1>
+        <button onclick="goToCart()">🛒 Carrito (<span id="cart-count">0</span>)</button>
     </header>
 
     <div class="content">
@@ -143,6 +144,7 @@
                 <h3>DIARIO - Enero 2025</h3>
                 <h4>Esto no es un diario pero trata de mí.</h4>
                 <p class="price">3,50€</p><p class="price2">+1,99€ gastos gestión y envío.</p>
+                <button onclick="addToCart('DIARIO - Enero 2025', 3.50, '1.png')">Añadir al carrito</button>
                 <div class="button-container">
                     <script async
                       src="https://js.stripe.com/v3/buy-button.js">
@@ -160,6 +162,28 @@
     <footer>
         <p>Gracias por apoyar el arte independiente. | © 2025 DIARIO</p>
     </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+        function addToCart(name, price, image) {
+            const item = { name, price, image };
+            cart.push(item);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(`${name} se ha añadido al carrito.`);
+            updateCartCount();
+        }
+    
+        function updateCartCount() {
+            document.getElementById("cart-count").innerText = cart.length;
+        }
+    
+        function goToCart() {
+            window.location.href = "cart.html";
+        }
+    
+        updateCartCount();
+    </script>
 
 </body>
 </html>
