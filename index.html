@@ -83,10 +83,10 @@
         /* Tienda */
         .shop {
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: 30px;
-            justify-content: space-between;
-            margin-bottom: 40px;
+            align-items: stretch; /* Asegura que las tarjetas se alineen en altura */
         }
         
         .product-card {
@@ -96,12 +96,11 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: left;
-            position: relative;
             
-            /* Hace que el contenido se distribuya en columnas */
+            /* Hace que todas las tarjetas tengan la misma altura */
             display: flex;
             flex-direction: column;
-            height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+            height: 100%; /* Fuerza que todas las tarjetas tengan la misma altura */
         }
         
         .product-card img {
@@ -122,17 +121,19 @@
         
         .product-card .price {
             font-size: 1.3rem;
-            color: var(--price-color);
+            color: #27ae60;
             font-weight: bold;
             margin: 10px 0;
         }
         
         .product-card .price2 {
             font-size: 10px;
-            color: var(--secondary-color);
+            color: #2d2d2d;
             font-weight: bold;
+            margin: 10px 0;
         }
         
+        /* Este botón siempre quedará abajo */
         .product-card button {
             background: #ff5722;
             color: white;
@@ -143,9 +144,10 @@
             border-radius: 5px;
             width: 100%;
             
-            /* Empuja el botón al final de la tarjeta */
+            /* Empuja el botón hacia abajo, manteniendo el resto del contenido arriba */
             margin-top: auto;
         }
+
         
         /* Footer */
         footer {
