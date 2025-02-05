@@ -90,13 +90,18 @@
         }
         
         .product-card {
-            background-color: var(--card-bg);
+            background-color: #C0C0C0;
             width: 30%;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: left;
             position: relative;
+            
+            /* Hace que el contenido se distribuya en columnas */
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
         }
         
         .product-card img {
@@ -129,14 +134,16 @@
         }
         
         .product-card button {
-            background: var(--primary-color);
-            color: var(--text-color);
+            background: #ff5722;
+            color: white;
             border: none;
             padding: 10px 15px;
             font-size: 1rem;
             cursor: pointer;
             border-radius: 5px;
             width: 100%;
+            
+            /* Empuja el botón al final de la tarjeta */
             margin-top: auto;
         }
         
