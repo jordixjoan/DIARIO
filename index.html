@@ -29,36 +29,40 @@
             padding-top: 80px;
         }
         
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            z-index: 1000;
+            header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Distribuye elementos a los extremos */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        z-index: 1000;
         }
         
         header h1 {
             font-family: 'Castellar', sans-serif;
             font-size: 3rem;
-            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
         }
         
         header button {
             background: var(--primary-color);
-            margin-left: auto;
             color: var(--text-color);
             border: none;
             padding: 10px 15px;
             font-size: 1rem;
             cursor: pointer;
             border-radius: 5px;
+            margin-right: 20px; /* Espacio del borde derecho */
         }
+
         
         /* Contenido principal */
         .content {
