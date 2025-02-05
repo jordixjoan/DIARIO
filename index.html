@@ -5,75 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIARIO - Fanzine</title>
     <style>
+        :root {
+            --primary-color: #ff5722;
+            --secondary-color: #2d2d2d;
+            --text-color: white;
+            --card-bg: #C0C0C0;
+            --price-color: #27ae60;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding-top: 80px;
         }
+        
         header {
-            display:flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 0;
-            background-color: #2d2d2d;
-            color: white;
-            text-align: center;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
             z-index: 1000;
         }
+        
         header h1 {
             font-family: 'Castellar', sans-serif;
             font-size: 3rem;
             margin: 0 auto;
-            margin-bottom: 5px;
-            text-align: center;
         }
+        
         header button {
-            background: #ff5722;
-            margin-left: 40px;
-            color: white;
+            background: var(--primary-color);
+            margin-left: auto;
+            color: var(--text-color);
             border: none;
             padding: 10px 15px;
             font-size: 1rem;
             cursor: pointer;
             border-radius: 5px;
         }
+        
+        /* Contenido principal */
         .content {
             width: 80%;
             max-width: 1200px;
-            margin-top: 40px;
+            margin: 40px auto;
             text-align: center;
         }
+        
         .home {
-            background-color: #fff;
+            background-color: white;
             padding: 60px;
-            margin-top: 40px;
             margin-bottom: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        
+        /* Tienda */
         .shop {
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
             gap: 30px;
+            justify-content: space-between;
             margin-bottom: 40px;
         }
+        
         .product-card {
-            background-color: #C0C0C0;
+            background-color: var(--card-bg);
             width: 30%;
             padding: 20px;
             border-radius: 8px;
@@ -81,34 +94,39 @@
             text-align: left;
             position: relative;
         }
+        
         .product-card img {
             width: 100%;
             border-radius: 8px;
             object-fit: cover;
         }
+        
         .product-card h3 {
             font-size: 1.5rem;
             margin-top: 15px;
         }
+        
         .product-card h4 {
             font-size: 1rem;
             color: #666;
         }
+        
         .product-card .price {
             font-size: 1.3rem;
-            color: #27ae60;
+            color: var(--price-color);
             font-weight: bold;
             margin: 10px 0;
         }
+        
         .product-card .price2 {
             font-size: 10px;
-            color: #2d2d2d;
+            color: var(--secondary-color);
             font-weight: bold;
-            margin: 10px 0;
         }
+        
         .product-card button {
-            background: #ff5722;
-            color: white;
+            background: var(--primary-color);
+            color: var(--text-color);
             border: none;
             padding: 10px 15px;
             font-size: 1rem;
@@ -116,26 +134,31 @@
             border-radius: 5px;
             width: 100%;
         }
+        
+        /* Footer */
         footer {
             width: 100%;
-            background-color: #2d2d2d;
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
             text-align: center;
             padding: 20px;
             font-size: 0.9rem;
             margin-top: 40px;
         }
+        
+        /* Etiqueta "Nuevo" */
         .new-badge {
             position: absolute;
             top: 10px;
             left: 10px;
             background-color: red;
-            color: white;
+            color: var(--text-color);
             font-size: 0.8rem;
             font-weight: bold;
             padding: 5px 10px;
             border-radius: 5px;
         }
+
     </style>
 </head>
 <body>
