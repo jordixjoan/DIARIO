@@ -30,7 +30,7 @@ app.post("/create-checkout-session", async (req, res) => {
                 product_data: { name: item.name, images: [item.image] },
                 unit_amount: Math.round(item.price * 100), // Convertir a centavos
             },
-            quantity: 1,
+            quantity: item.quantity, // Usar la cantidad enviada en el carrito
         }));
 
         // Crea la sesión de pago en Stripe
@@ -67,14 +67,13 @@ app.post("/create-checkout-session", async (req, res) => {
             ],
         });
 
+        // Responde con la URL de la sesión para redirigir al usuario al pago
         res.json({ url: session.url });
     } catch (error) {
         console.error("Error en Stripe:", error);
         res.status(500).json({ error: "No se pudo procesar el pago" });
     }
 });
-
-
 
 // Inicia el servidor en el puerto configurado
 app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
