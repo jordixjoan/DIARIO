@@ -36,4 +36,4 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 });
 
-app.listen(PORT, () => console.log("Servidor en http://localhost: ${PORT}"));
+app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
