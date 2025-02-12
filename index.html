@@ -231,6 +231,7 @@
         
             if (existingItem) {
                 // Si el producto ya existe, simplemente incrementamos su cantidad
+                existingItem.quantity += 1;
                 alert(`${name} ya está en el carrito. Se actualizará.`);
             } else {
                 // Si no existe, añadimos el producto al carrito
