@@ -24,8 +24,8 @@ app.post("/create-checkout-session", async (req, res) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
-            success_url: "https://github.com/jordixjoan/DIARIO/compraconfirmada.html",
-            cancel_url: "https://github.com/jordixjoan/DIARIO/compracancelada.html",
+            success_url: "https://github.com/jordixjoan/DIARIO/compra_confirmada.html",
+            cancel_url: "https://github.com/jordixjoan/DIARIO/compra_cancelada.html",
         });
 
         res.json({ id: session.id });
