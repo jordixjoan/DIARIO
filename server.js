@@ -46,7 +46,7 @@ app.post("/create-checkout-session", async (req, res) => {
       console.log("Sesión de Stripe creada:", session);
 
         // Devuelve el ID de la sesión de pago creada
-        res.json({ id: session.id });
+        res.json({ url: session.url });
     } catch (error) {
         console.error("Error en Stripe:", error);  // Muestra cualquier error en Stripe
         res.status(500).json({ error: "No se pudo procesar el pago" });
