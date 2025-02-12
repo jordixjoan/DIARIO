@@ -43,6 +43,8 @@ app.post("/create-checkout-session", async (req, res) => {
             cancel_url: "https://jordixjoan.github.io/DIARIO/compra_cancelada.html",  // URL de cancelación
         });
 
+      console.log("Sesión de Stripe creada:", session);
+
         // Devuelve el ID de la sesión de pago creada
         res.json({ id: session.id });
     } catch (error) {
