@@ -43,9 +43,15 @@
             renderCart();
         }
 
-        function checkout() {
-            // Aquí puedes integrar Stripe Checkout
-            alert("Redirigiendo a pago...");
+        async function checkout() {
+            const response = await fetch("https://tu-servidor.up.railway.app/create-checkout-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cartItems: cart }),
+            });
+        
+            const data = await response.json();
+            window.location.href = data.url;  // Redirige a Stripe
         }
 
         renderCart();
