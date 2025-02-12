@@ -51,9 +51,7 @@ app.post("/create-checkout-session", async (req, res) => {
                             amount: 199,  // 1,99 EUR
                             currency: "eur",
                         },
-                        display_name: "Envío a España",
-                        // Este costo será para España
-                        shipping_rate_name: 'España',
+                        display_name: "Envío a España",  // Nombre para la opción de envío
                     },
                 },
                 {
@@ -63,9 +61,7 @@ app.post("/create-checkout-session", async (req, res) => {
                             amount: 299,  // 2,99 EUR
                             currency: "eur",
                         },
-                        display_name: "Envío a Europa",
-                        // Este costo será para países de Europa
-                        shipping_rate_name: 'Europa',
+                        display_name: "Envío a Europa",  // Nombre para la opción de envío
                     },
                 },
             ],
@@ -77,6 +73,7 @@ app.post("/create-checkout-session", async (req, res) => {
         res.status(500).json({ error: "No se pudo procesar el pago" });
     }
 });
+
 
 
 // Inicia el servidor en el puerto configurado
