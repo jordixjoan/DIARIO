@@ -226,21 +226,34 @@
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
         function addToCart(name, price, image) {
-            const item = { name, price, image };
-            cart.push(item);
+            // Verificar si el producto ya está en el carrito
+            const existingItem = cart.find(item => item.name === name);
+        
+            if (existingItem) {
+                // Si el producto ya existe, simplemente incrementamos su cantidad
+                alert(`${name} ya está en el carrito. Se actualizará.`);
+            } else {
+                // Si no existe, añadimos el producto al carrito
+                const item = { name, price, image };
+                cart.push(item);
+                alert(`${name} se ha añadido al carrito.`);
+            }
+        
+            // Guardar el carrito actualizado en el localStorage
             localStorage.setItem("cart", JSON.stringify(cart));
-            alert(`${name} se ha añadido al carrito.`);
+        
+            // Actualizar el contador del carrito
             updateCartCount();
         }
-
+        
         function updateCartCount() {
             document.getElementById("cart-count").innerText = cart.length;
         }
-
+        
         function goToCart() {
             window.location.href = "cart.html";
         }
-
+        
         updateCartCount();
     </script>
 
