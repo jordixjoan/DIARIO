@@ -31,7 +31,18 @@
             cart = [];
         }
 
+        // Función para asegurar que cada producto tiene la propiedad quantity
+        function ensureQuantity() {
+            cart.forEach(item => {
+                if (!item.quantity) {
+                    item.quantity = 1;  // Asignar 1 si no tiene cantidad
+                }
+            });
+        }
+
         function renderCart() {
+            ensureQuantity();  // Asegura que cada producto tenga una cantidad
+
             let cartHTML = "";
             cart.forEach((item, index) => {
                 cartHTML += `<div class="cart-item">
