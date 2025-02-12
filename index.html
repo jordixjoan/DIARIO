@@ -230,12 +230,12 @@
             const existingItem = cart.find(item => item.name === name);
         
             if (existingItem) {
-                // Si el producto ya existe, simplemente incrementamos su cantidad
+                // Si el producto ya existe, incrementar la cantidad
                 existingItem.quantity += 1;
-                alert(`${name} ya está en el carrito. Se actualizará.`);
+                alert(`${name} ahora tiene ${existingItem.quantity} unidades en el carrito.`);
             } else {
-                // Si no existe, añadimos el producto al carrito
-                const item = { name, price, image };
+                // Si no existe, añadir el producto con cantidad 1
+                const item = { name, price, image, quantity: 1 };
                 cart.push(item);
                 alert(`${name} se ha añadido al carrito.`);
             }
@@ -248,7 +248,9 @@
         }
         
         function updateCartCount() {
-            document.getElementById("cart-count").innerText = cart.length;
+            // Actualiza el contador mostrando el número total de productos en el carrito
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById("cart-count").innerText = totalItems;
         }
         
         function goToCart() {
@@ -256,6 +258,7 @@
         }
         
         updateCartCount();
+
     </script>
 
 </body>
