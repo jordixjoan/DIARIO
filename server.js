@@ -39,8 +39,8 @@ app.post("/create-checkout-session", async (req, res) => {
             payment_method_types: ["card"],  // Acepta pagos con tarjetas
             line_items: lineItems,
             mode: "payment",  // Modo de pago: pago directo
-            success_url: "https://github.com/jordixjoan/DIARIO/compra_confirmada.html",  // URL de éxito
-            cancel_url: "https://github.com/jordixjoan/DIARIO/compra_cancelada.html",  // URL de cancelación
+            success_url: "https://jordixjoan.github.io/DIARIO/compra_confirmada.html",  // URL de éxito
+            cancel_url: "https://jordixjoan.github.io/DIARIO/compra_cancelada.html",  // URL de cancelación
         });
 
         // Devuelve el ID de la sesión de pago creada
