@@ -9,6 +9,9 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ccc; }
         .cart-item img { width: 50px; }
         button { margin: 10px; padding: 10px; cursor: pointer; }
+        .quantity-controls { display: flex; align-items: center; }
+        .quantity-controls button { padding: 5px 10px; }
+        .quantity-controls span { margin: 0 10px; }
     </style>
 </head>
 <body>
@@ -34,10 +37,23 @@
                 cartHTML += `<div class="cart-item">
                                 <img src="${item.image}" alt="${item.name}">
                                 <span>${item.name} - €${item.price.toFixed(2)}</span>
+                                <div class="quantity-controls">
+                                    <button onclick="changeQuantity(${index}, -1)">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button onclick="changeQuantity(${index}, 1)">+</button>
+                                </div>
+                                <span>€${(item.price * item.quantity).toFixed(2)}</span>
                                 <button onclick="removeItem(${index})">Eliminar</button>
                             </div>`;
             });
             document.getElementById("cart-items").innerHTML = cartHTML || "<p>El carrito está vacío.</p>";
+        }
+
+        function changeQuantity(index, delta) {
+            if (cart[index].quantity + delta < 1) return;  // No permitir cantidad menor a 1
+            cart[index].quantity += delta;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
         }
 
         function removeItem(index) {
