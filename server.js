@@ -11,7 +11,7 @@ app.use(cors());
 app.post("/create-checkout-session", async (req, res) => {
     try {
         const { cartItems } = req.body;
-
+console.log(cartItems);
         const lineItems = cartItems.map(item => ({
             price_data: {
                 currency: "eur",
