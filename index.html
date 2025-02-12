@@ -246,12 +246,13 @@
             // Actualizar el contador del carrito
             updateCartCount();
         }
-        
+
         function updateCartCount() {
             // Actualiza el contador mostrando el número total de productos en el carrito
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             document.getElementById("cart-count").innerText = totalItems;
         }
+
         
         function goToCart() {
             window.location.href = "cart.html";
