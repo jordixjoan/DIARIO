@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
+const PORT = process.env.PORT || 8080;
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -35,4 +36,4 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 });
 
-app.listen(3001, () => console.log("Servidor en http://localhost:3001"));
+app.listen(PORT, () => console.log("Servidor en http://localhost: ${PORT}"));
