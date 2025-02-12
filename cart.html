@@ -49,7 +49,7 @@
                                 <img src="${item.image}" alt="${item.name}">
                                 <span>${item.name} - €${item.price.toFixed(2)}</span>
                                 <div class="quantity-controls">
-                                    <button onclick="changeQuantity(${index}, -1)">-</button>
+                                    <button onclick="changeQuantity(${index}, -1)" ${item.quantity === 1 ? 'style="display:none;"' : ''}>-</button>
                                     <span>${item.quantity}</span>
                                     <button onclick="changeQuantity(${index}, 1)">+</button>
                                 </div>
