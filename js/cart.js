@@ -90,12 +90,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         try {
-            const response = await fetch("https://diario-production-f6f2.up.railway.app/create-checkout-session", {
+            const response = await fetch("https://diario-production-1.up.railway.app/create-checkout-session", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cartItems: cart }),
             });
-            console.log(response);
+            console.log("hola!!"+ response);
             if (!response.ok) {
                 throw new Error(`Error en el servidor: ${response.status}`);
             }
