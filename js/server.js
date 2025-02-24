@@ -4,10 +4,16 @@ const cors = require("cors");
 const app = express();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
+import cors from 'cors';
+
 const PORT = process.env.PORT || 8080;
 
 // Configurar CORS correctamente
-app.use(cors());
+app.use(cors({
+    origin: '*', // Permitir todas las solicitudes (prueba con '*' y luego restringe)
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Middleware para manejar los datos JSON
 app.use(express.json());
@@ -45,8 +51,8 @@ app.post("/create-checkout-session", async (req, res) => {
             payment_method_types: ["card"],  // Acepta pagos con tarjeta
             line_items: lineItems,  // Los artículos a pagar
             mode: "payment",  // Modo de pago: pago directo
-            success_url: "https://jordixjoan.github.io/DIARIO/compra_confirmada.html",  // URL de éxito
-            cancel_url: "https://jordixjoan.github.io/DIARIO/compra_cancelada.html",  // URL de cancelación
+            success_url: "",  // URL de éxito
+            cancel_url: "",  // URL de cancelación
             shipping_address_collection: {
                 allowed_countries: ['ES', 'AT', 'BE', 'FR', 'DE', 'IT', 'NL', 'PT', 'SE'],  // Lista de países europeos permitidos
             },
