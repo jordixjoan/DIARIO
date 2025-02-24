@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
 
 // Ruta para crear la sesión de pago en Stripe
 app.post("/create-checkout-session", async (req, res) => {
+    console.log("Recibiendo solicitud para crear sesión de pago");
     try {
         const { cartItems } = req.body;  // Extrae los artículos del carrito del cuerpo de la solicitud
 
