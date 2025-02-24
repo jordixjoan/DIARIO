@@ -1,17 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const app = express();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const PORT = process.env.PORT || 8080;
-const app = express();
 
 // Configurar CORS correctamente
-app.use(cors({
-    origin: '*',  // Permitir todas las solicitudes (ajustar para producción si es necesario)
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 
 // Middleware para manejar los datos JSON
 app.use(express.json());
