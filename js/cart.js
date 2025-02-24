@@ -89,11 +89,26 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        const response = await fetch("https://diario.railway.app/create-checkout-session", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: cart })
-        });
+        try {
+            const response = await fetch("https://diario-production-f6f2.up.railway.app/create-checkout-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cartItems: cart }),
+            });
+            console.log(response);
+            if (!response.ok) {
+                throw new Error(`Error en el servidor: ${response.status}`);
+            }
+
+            const data = await response.json();
+            if (!data.url) {
+                throw new Error("No se recibió una URL de pago.");
+            }
+
+            window.location.href = data.url;  // Redirige a Stripe
+        } catch (error) {
+            alert("Hubo un problema con la compra: " + error.message);
+        }
 
         const session = await response.json();
         const stripe = Stripe("pk_live_51QoMfzKFGE8wIMqgKaTP1BLeIseidBMhY3bEzanIoEFL8ywyuiobB54Xr3nBm5eoA9QbzD1ECEr7OeOWP7Ixlc7f00eXwqBtad");
@@ -140,10 +155,6 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.removeItem("cart");
         updateCart();
     }
-
-    document.getElementById("emptyCartBtn").addEventListener("click", function() {
-        emptyCart();
-    });
 
     updateCart();
 });
