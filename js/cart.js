@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cartItems: cart }),
             });
-
+            console.log("hola!!"+ response);
             if (!response.ok) {
                 throw new Error(`Error en el servidor: ${response.status}`);
             }
@@ -109,6 +109,11 @@ document.addEventListener("DOMContentLoaded", function() {
         } catch (error) {
             alert("Hubo un problema con la compra: " + error.message);
         }
+
+        const session = await response.json();
+        const stripe = Stripe("pk_live_51QoMfzKFGE8wIMqgKaTP1BLeIseidBMhY3bEzanIoEFL8ywyuiobB54Xr3nBm5eoA9QbzD1ECEr7OeOWP7Ixlc7f00eXwqBtad");
+
+        await stripe.redirectToCheckout({ sessionId: session.id });
     });
 
     function changeQuantity(action, name) {

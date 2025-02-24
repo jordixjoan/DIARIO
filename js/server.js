@@ -6,25 +6,24 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-// Configurar CORS correctamente
-app.use(cors({
-    origin: '*',  // Permitir todas las solicitudes (ajustar para producción si es necesario)
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// Configura CORS para permitir solicitudes de tu frontend
+const corsOptions = {
+  origin: "*", // Permite todas las URLs, puedes especificar tu dominio si quieres restringirlo
+  methods: ["GET", "POST", "OPTIONS"], // Asegúrate de que el método OPTIONS está permitido
+  allowedHeaders: ["Content-Type"], // Los encabezados permitidos
+};
 
-// Middleware para manejar los datos JSON
+// Aplica la configuración de CORS
+app.use(cors(corsOptions));
+
+// Parsea los datos JSON del cuerpo de las solicitudes
 app.use(express.json());
 
-// Ruta de prueba
-app.get('/', (req, res) => {
-    res.json({ mensaje: 'CORS funcionando' });
-});
+app.options('*', cors());
 
-// Ruta para crear la sesión de pago en Stripe
 app.post("/create-checkout-session", async (req, res) => {
     try {
-        const { cartItems } = req.body;  // Extrae los artículos del carrito del cuerpo de la solicitud
+        const { cartItems } = req.body; // Extrae los artículos del carrito del cuerpo de la solicitud
 
         // Verifica si los artículos están presentes
         if (!cartItems || cartItems.length === 0) {
@@ -87,6 +86,4 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, () => {
-    console.log(`Servidor en puerto ${PORT}`);
-});
+app.listen(3000, () => console.log('Servidor en puerto 3000'));
