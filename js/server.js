@@ -4,7 +4,7 @@ const app = express();
 
 // Habilita CORS para todas las solicitudes
 app.use(cors({
-    origin: '*', // O especifica 'https://jordixjoan.github.io'
+    origin: 'https://jordixjoan.github.io', // O especifica 'https://jordixjoan.github.io'
     methods: ['GET', 'POST', 'OPTIONS']
 }));
 
