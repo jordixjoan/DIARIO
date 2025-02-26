@@ -6,7 +6,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 import cors from 'cors';
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
+
+console.log('Iniciando servidor...');
 
 // Configurar CORS correctamente
 app.use(cors({
