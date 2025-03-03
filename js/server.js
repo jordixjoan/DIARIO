@@ -6,7 +6,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 import cors from 'cors';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5500;
 
 console.log('Iniciando servidor...');
 
