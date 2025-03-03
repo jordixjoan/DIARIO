@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 5500;
 
 console.log('Iniciando servidor...');
 
+app.get('/test', (req, res) => {
+    console.log("Llega a /test");
+    res.send("Todo ok");
+});
+
 // Configurar CORS correctamente
 app.use(cors({
     origin: '*', // Permitir todas las solicitudes (prueba con '*' y luego restringe)
