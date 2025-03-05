@@ -31,7 +31,7 @@ function cargarEventListeners() {
 
 // Funciones
 
-function procesarPago() {
+async function procesarPago() {
     if (articulosCarrito.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de proceder al pago.");
         return;
