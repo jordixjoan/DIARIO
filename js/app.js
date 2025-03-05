@@ -42,10 +42,16 @@ async function procesarPago() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                items: articulosCarrito.map(curso => ({
-                    id: curso.id,
-                    cantidad: curso.cantidad,
-                    precio: curso.precio,
+                line_items: articulosCarrito.map(curso => ({
+                    price_data: {
+                        currency: 'eur', // Aquí defines la moneda
+                        product_data: {
+                            name: curso.titulo, // Nombre del producto
+                            images: [curso.imagen], // Imagen del producto (array de URLs)
+                        },
+                        unit_amount: parseFloat(curso.precio.replace('€', '').replace(',', '.')) * 100, // El precio en centavos
+                    },
+                    quantity: curso.cantidad, // Cantidad del producto
                 })),
             }),
         });

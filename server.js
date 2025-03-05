@@ -26,7 +26,7 @@ app.post("/create-checkout-session", async (req, res) => {
                     name: item.name,
                     images: item.image ? [item.image] : [], // Evitar errores si la imagen no existe
                 },
-                unit_amount: item.price * 100, // Convertir a céntimos
+                unit_amount: Math.round(parseFloat(item.price.replace('€', '').replace(',', '.')) * 100), // Convertir a céntimos si el precio está en formato string
             },
             quantity: item.quantity,
         }));
@@ -45,6 +45,7 @@ app.post("/create-checkout-session", async (req, res) => {
         res.status(500).json({ error: "Error al crear la sesión de pago" });
     }
 });
+
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
