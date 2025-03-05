@@ -38,13 +38,15 @@ async function procesarPago() {
     }
     
     try {
-        const response = await fetch("https://diario-production-1.railway.app/create-checkout-session", {
+        const response = await fetch("https://diario-production-1.up.railway.app/create-checkout-session", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                items: [
-                    articulosCarrito
-                ],
+                items: articulosCarrito.map(curso => ({
+                    id: curso.id,
+                    cantidad: curso.cantidad,
+                    precio: curso.precio,
+                })),
             }),
         });
 
