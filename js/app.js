@@ -47,7 +47,6 @@ async function procesarPago() {
                         currency: 'eur', // Aquí defines la moneda
                         product_data: {
                             name: curso.titulo, // Nombre del producto
-                            images: [curso.imagen], // Imagen del producto (array de URLs)
                         },
                         unit_amount: parseFloat(curso.precio.replace('€', '').replace(',', '.')) * 100, // El precio en centavos
                     },
