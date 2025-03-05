@@ -18,7 +18,7 @@ app.use(express.json());
 app.post("/create-checkout-session", async (req, res) => {
     try {
         const { items } = req.body;
-
+        console.log("hola");
         const lineItems = items.map(item => ({
             price_data: {
                 currency: "eur",
