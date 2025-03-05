@@ -7,7 +7,7 @@ const app = express();
 
 // Configurar CORS correctamente
 app.use(cors({
-    origin: "https://jordixjoan.github.io", // Permitir peticiones desde tu frontend
+    origin: "https://jordixjoan.github.io/", // Permitir peticiones desde tu frontend
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization"
 }));
