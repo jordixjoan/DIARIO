@@ -25,9 +25,40 @@ function cargarEventListeners() {
         articulosCarrito = [];
         carritoHTML();
     });
+
+    procederCompraBtn.addEventListener("click", procesarPago);
 }
 
 // Funciones
+
+function procesarPago() {
+    if (articulosCarrito.length === 0) {
+        alert("El carrito está vacío. Agrega productos antes de proceder al pago.");
+        return;
+    }
+    
+    try {
+        const response = await fetch("https://diario-production-1.railway.app/create-checkout-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                items: [
+                    { name: "Producto 1", price: 20, quantity: 1 }
+                ],
+            }),
+        });
+
+        const data = await response.json();
+        if (data.url) {
+            window.location.href = data.url; // Redirige a Stripe
+        }
+    } catch (error) {
+        console.error("Error al procesar el pago:", error);
+    }
+
+    articulosCarrito = [];
+    carritoHTML();
+}
 
 function agregarCurso(e) {
     e.preventDefault();
