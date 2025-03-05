@@ -1,0 +1,260 @@
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: white
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    font-size: 3rem;
+}
+h4 {
+    font-size: 16px;
+    font-weight: 700;
+}
+header {
+    padding: 20px 0 0 0;
+    background: #D1D1D1;
+    text-align: center;
+}
+@media (min-width: 750px) {
+    header {
+        text-align: left;
+    }
+}
+.borrar-curso {
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
+#hero {
+    background-image:url(../img/hero.jpg);
+    height: 350px;
+    background-size: cover;
+}
+#encabezado {
+    margin: 30px 0;
+}
+.submenu {
+    position: relative;
+}
+
+.submenu #carrito{
+    display: none;
+}
+.submenu:hover #carrito{
+    display: block;
+    position: absolute;
+    right:0;
+
+    top:100%;
+    z-index: 1;
+    background-color: whitesmoke;
+    padding: 20px;
+    min-height: 100px;
+    min-width: 450px;
+}
+
+.disminuir-cantidad,
+.aumentar-cantidad {
+    font-size: 12px;  /* Tamaño del texto */
+    padding: 2px 6px;  /* Espaciado interno */
+    width: 30px;  /* Ancho fijo */
+    height: 30px; /* Alto fijo */
+    line-height: 16px; /* Alineación del texto */
+    text-align: center;  
+    border-radius: 4px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Borde sutil */
+    background-color: #f8f8f8; /* Color de fondo */
+    cursor: pointer;
+}
+
+#gastos-envio {
+    margin-top: -20px; /* Ajusta el valor según necesites */
+}
+
+#total-real-carrito {
+    margin-top: -20px; /* Ajusta el valor según necesites */
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.vacio {
+    padding: 10px;
+    background-color: crimson;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+}
+.contenido-hero {
+    margin-top: 80px;
+    color: white;
+}
+.contenido-hero form {
+    position: relative;
+    margin-bottom: 0;
+}
+.contenido-hero form #buscador {
+    height: 50px;
+    margin-bottom: 0;
+}
+.contenido-hero form .submit-buscador {
+    position: absolute;
+    right:0;
+    top:0;
+    height: 100%;
+    padding: 0;
+    display: block;
+    text-indent: -9999px;
+    width: 50px;
+    background-image: url(../img/lupa.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    border:none;
+}
+
+.imagen-curso {
+    width: 100%;
+    height: auto; /* Ajusta según tu diseño */
+    min-height: 250px;
+    display: block;
+    max-height: 250px;
+    object-fit: contain; 
+}
+
+#mostrar-carrito {
+    text-decoration: none; /* Elimina el subrayado */
+    color: black; /* Cambia el color a negro */
+    display: flex; /* Habilita el uso de flexbox */
+    align-items: 50px; /* Centra el contenido verticalmente */
+    justify-content: center; /* Si también quieres centrarlo horizontalmente */
+}
+
+
+.barra {
+    padding: 20px 0;
+    background: whitesmoke; /* Old browsers */
+}
+
+.barra p {
+    margin:0;
+    color: white;
+}
+.icono {
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 60px;
+    background-size: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+@media (min-width: 750px) {
+    .icono {
+        margin-bottom:0;
+    }
+}
+.icono1 {
+    background-image: url(../img/icono1.png);
+}
+.icono2 {
+    background-image: url(../img/icono2.png);
+}
+.icono3 {
+    background-image: url(../img/icono3.png);
+}
+
+#lista-cursos .row {
+    margin-bottom:20px;
+}
+.agregar-carrito {
+    color: black; /* Cambia el color del texto a negro */
+}
+
+.card {
+    text-align: center;
+    background: white;
+}
+@media (min-width: 550px) {
+    .card {
+        text-align: left;
+    }
+}
+.info-card  {
+    padding: 10px 20px;
+}
+
+.info-card p, 
+.card h4 {
+    margin-bottom: 5px;
+}
+.info-card .precio {
+    text-decoration: line-through;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.info-card .precio span {
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.footer .container .row {
+    display: flex; /* Usamos flexbox para distribuir las columnas */
+    justify-content: space-between; /* Para asegurarnos de que las columnas estén distribuidas de forma equitativa */
+    margin: 0; /* Para eliminar cualquier margen extra que pueda generar desalineación */
+}
+
+.footer nav {
+    flex: 1; /* Cada columna ocupará el 25% del contenedor */
+    padding: 20px; /* Añade espacio interno en cada columna */
+    background-color: white; /* Fondo claro para las columnas */
+    border-radius: 8px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye padding en el tamaño total de la columna */
+    margin: 0 10px; /* Espacio horizontal entre las columnas */
+}
+
+.footer h2 {
+    margin-bottom: 10px; /* Espacio debajo del título */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer .enlace {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+
+.footer .enlace:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Medios de comunicación: Responsividad */
+@media screen and (max-width: 768px) {
+    .footer .container .row {
+        flex-direction: column; /* En pantallas pequeñas, las columnas se apilan verticalmente */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer .container .row {
+        flex-direction: column; /* En pantallas muy pequeñas, las columnas se apilan verticalmente */
+    }
+}
+
