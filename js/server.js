@@ -3,6 +3,11 @@ const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
+app.use(cors({
+    origin: "https://diario-production-1.up.railway.app" // Permitir solicitudes desde este origen
+}));
+
+
 const app = express();
 app.use(express.json());
 app.use(cors());

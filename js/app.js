@@ -43,7 +43,7 @@ async function procesarPago() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 items: [
-                    { name: "Producto 1", price: 20, quantity: 1 }
+                    articulosCarrito
                 ],
             }),
         });
