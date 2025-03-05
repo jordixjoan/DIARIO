@@ -4,7 +4,7 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 app.use(cors({
-    origin: "https://diario-production-1.up.railway.app" // Permitir solicitudes desde este origen
+    origin: "https://jordixjoan.github.io" // Permitir solicitudes desde este origen
 }));
 
 
