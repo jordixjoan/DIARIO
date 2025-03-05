@@ -42,15 +42,12 @@ async function procesarPago() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                items: [
-                    {
-                        name: "Curso de arte",
-                        image: "url-de-imagen",
-                        price: 30, // En euros
-                        quantity: 1
-                    },
-                    // otros artículos
-                ]
+                items: articulosCarrito.map(curso => ({
+                    name: curso.titulo,
+                    image: curso.image,
+                    cantidad: curso.quantity,
+                    precio: curso.price,
+                })),
             }),
         });
 
