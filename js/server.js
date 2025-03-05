@@ -3,22 +3,18 @@ const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://jordixjoan.github.io/DIARIO/");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(200); // Responder rápido a preflight requests
-    }
-
-    next();
-});
-
 const app = express();
-app.use(express.json());
-app.use(cors());
 
+// Configurar CORS correctamente
+app.use(cors({
+    origin: "https://jordixjoan.github.io", // Permitir peticiones desde tu frontend
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}));
+
+app.use(express.json());
+
+// Endpoint para crear la sesión de pago con Stripe
 app.post("/create-checkout-session", async (req, res) => {
     try {
         const { items } = req.body;
@@ -28,7 +24,7 @@ app.post("/create-checkout-session", async (req, res) => {
                 currency: "eur",
                 product_data: {
                     name: item.name,
-                    images: [item.image], // Opcional
+                    images: item.image ? [item.image] : [], // Evitar errores si la imagen no existe
                 },
                 unit_amount: item.price * 100, // Convertir a céntimos
             },
@@ -50,5 +46,6 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 });
 
+// Iniciar el servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
