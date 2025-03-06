@@ -6,8 +6,20 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 
 // Configurar CORS correctamente
+const allowedOrigins = [
+    "https://jordixjoan.github.io",  // Tu frontend en GitHub Pages
+    "http://127.0.0.1:5000",         // Backend local
+    "http://127.0.0.1:5500"          // Si usas Live Server u otro puerto
+];
+
 app.use(cors({
-    origin: "https://jordixjoan.github.io/", // Permitir peticiones desde tu frontend
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization"
 }));
@@ -34,8 +46,8 @@ app.post("/create-checkout-session", async (req, res) => {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
-            success_url: `${process.env.FRONTEND_URL}/success`,
-            cancel_url: `${process.env.FRONTEND_URL}/cancel`,
+            success_url: `${process.env.FRONTEND_URL}/success.html`,
+            cancel_url: `${process.env.FRONTEND_URL}/cancel.html`,
         });
 
         res.json({ url: session.url });
