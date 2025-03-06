@@ -66,7 +66,7 @@ ul {
         right: auto; /* Quita el alineamiento a la derecha */
         left: 50%; /* Lo centra */
         transform: translateX(-50%); /* Lo posiciona bien */
-        min-width: 280px; /* Un ancho más pequeño en móviles */
+        min-width: 200px; /* Un ancho más pequeño en móviles */
     }
 }
 
