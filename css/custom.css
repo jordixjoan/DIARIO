@@ -45,15 +45,45 @@ ul {
     display: none;
 }
 
-.submenu:hover #carrito {
-    min-width: 100%; /* Que ocupe todo el ancho disponible */
-    left: 0; /* Que se ajuste mejor en móviles */
-    right: auto; /* Evita que se salga de la pantalla */
-    padding: 10px; /* Reduce el padding */
-    display: block;
+#carrito {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 1000;
+    background-color: whitesmoke;
+    padding: 20px;
+    min-height: 100px;
+    min-width: 300px; /* Reducir el tamaño mínimo en móviles */
+    max-width: 90vw; /* Evita que el carrito sea más grande que la pantalla */
+    overflow: auto; /* Si el contenido es grande, agrega scroll interno */
+    border-radius: 10px; /* Bordes redondeados para un mejor diseño */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para mejor visibilidad */
 }
 
-@media (min-width: 550px) {
+/* 📌 Ajustes en pantallas pequeñas */
+@media (max-width: 600px) {
+    #carrito {
+        right: auto; /* Quita el alineamiento a la derecha */
+        left: 50%; /* Lo centra */
+        transform: translateX(-50%); /* Lo posiciona bien */
+        min-width: 280px; /* Un ancho más pequeño en móviles */
+    }
+}
+
+.submenu:hover #carrito {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 1;
+    background-color: whitesmoke;
+    padding: 20px;
+    min-height: 100px;
+    min-width: 450px;
+}
+
+/* Diseño responsivo para móviles */
+@media (max-width: 600px) {
     .submenu:hover #carrito {
         position: absolute;
         right: 0;
