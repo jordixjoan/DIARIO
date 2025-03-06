@@ -36,14 +36,7 @@ header {
 ul {
     list-style: none;
 }
-#hero {
-    background-image:url(../img/hero.jpg);
-    height: 350px;
-    background-size: cover;
-}
-#encabezado {
-    margin: 30px 0;
-}
+
 .submenu {
     position: relative;
 }
@@ -51,17 +44,27 @@ ul {
 .submenu #carrito{
     display: none;
 }
-.submenu:hover #carrito{
+
+.submenu:hover #carrito {
     display: block;
     position: absolute;
-    right:0;
-
-    top:100%;
+    right: 0;
+    top: 100%;
     z-index: 1;
     background-color: whitesmoke;
     padding: 20px;
     min-height: 100px;
     min-width: 450px;
+}
+
+/* Diseño responsivo para móviles */
+@media (max-width: 600px) {
+    .submenu:hover #carrito {
+        min-width: 100%; /* Que ocupe todo el ancho disponible */
+        left: 0; /* Que se ajuste mejor en móviles */
+        right: auto; /* Evita que se salga de la pantalla */
+        padding: 10px; /* Reduce el padding */
+    }
 }
 
 .disminuir-cantidad,
@@ -148,28 +151,6 @@ ul {
 .barra p {
     margin:0;
     color: white;
-}
-.icono {
-    background-repeat: no-repeat;
-    background-position: left center;
-    padding-left: 60px;
-    background-size: 30px;
-    margin-bottom: 40px;
-    text-align: center;
-}
-@media (min-width: 750px) {
-    .icono {
-        margin-bottom:0;
-    }
-}
-.icono1 {
-    background-image: url(../img/icono1.png);
-}
-.icono2 {
-    background-image: url(../img/icono2.png);
-}
-.icono3 {
-    background-image: url(../img/icono3.png);
 }
 
 #lista-cursos .row {
