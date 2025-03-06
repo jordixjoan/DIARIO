@@ -53,20 +53,22 @@ ul {
     background-color: whitesmoke;
     padding: 20px;
     min-height: 100px;
-    min-width: 300px; /* Reducir el tamaño mínimo en móviles */
-    max-width: 90vw; /* Evita que el carrito sea más grande que la pantalla */
-    overflow: auto; /* Si el contenido es grande, agrega scroll interno */
-    border-radius: 10px; /* Bordes redondeados para un mejor diseño */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para mejor visibilidad */
+    min-width: 300px; /* Tamaño mínimo en pantallas grandes */
+    max-width: 90vw; /* Limita el ancho máximo al 90% de la pantalla */
+    overflow: auto; /* Agrega scroll si el contenido es muy grande */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* 📌 Ajustes en pantallas pequeñas */
 @media (max-width: 600px) {
     #carrito {
-        right: auto; /* Quita el alineamiento a la derecha */
-        left: 50%; /* Lo centra */
-        transform: translateX(-50%); /* Lo posiciona bien */
-        min-width: 200px; /* Un ancho más pequeño en móviles */
+        right: auto; /* Desactiva el alineamiento derecho */
+        left: 50%; /* Centra el carrito */
+        transform: translateX(-50%); /* Asegura que quede bien alineado */
+        width: 90vw; /* Se adapta al 90% del ancho de la pantalla */
+        min-width: 250px; /* No se hará más pequeño de 250px */
+        max-width: 90vw; /* Evita que se desborde en pantallas chicas */
     }
 }
 
@@ -191,12 +193,12 @@ ul {
 
 .card {
     text-align: center;
+    margin-top: 5px;
     background: white;
 }
 @media (min-width: 550px) {
     .card {
         text-align: left;
-        margin-top: 20px;
     }
 }
 .info-card  {
@@ -252,7 +254,6 @@ ul {
 }
 
 .footer .enlace:hover {
-    color: #007bff;
     text-decoration: underline;
 }
 
