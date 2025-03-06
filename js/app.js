@@ -47,6 +47,7 @@ async function procesarPago () {
             body: JSON.stringify({
                 items: articulosCarrito.map(item => ({
                     name: item.titulo,
+                    image: item.imagen,
                     quantity: item.cantidad,
                     price: item.precio,
                 })),

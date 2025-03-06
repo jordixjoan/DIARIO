@@ -36,6 +36,7 @@ app.post("/create-checkout-session", async (req, res) => {
                 currency: "eur",
                 product_data: {
                     name: item.name,
+                    images: item.image,
                 },
                 unit_amount: Math.round(parseFloat(item.price.replace('€', '').replace(',', '.')) * 100), // Convertir a céntimos si el precio está en formato string
             },
