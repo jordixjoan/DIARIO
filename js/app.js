@@ -11,12 +11,12 @@ let articulosCarrito = [];
 // Listeners
 cargarEventListeners();
 
-function cargarEventListeners () {
-    listaCursos.addEventListener('click', agregarCurso);
+function cargarEventListeners() {
+    listaCursos.addEventListener("click", agregarCurso);
     carrito.addEventListener("click", eliminarCurso);
     carrito.addEventListener("click", modificarCantidad); // Evento para botones + y -
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
         articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
         carritoHTML();
     });
@@ -27,6 +27,31 @@ function cargarEventListeners () {
     });
 
     procederCompraBtn.addEventListener("click", procesarPago);
+
+    // 📌 Agregar evento de apertura/cierre del carrito en móviles
+    let submenu = document.querySelector(".submenu");
+    let carritoElement = document.getElementById("carrito");
+
+    function isMobile() {
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    }
+
+    if (isMobile()) {
+        submenu.addEventListener("click", function (event) {
+            event.stopPropagation(); // Evita que se cierre al hacer clic dentro
+            carritoElement.style.display = carritoElement.style.display === "block" ? "none" : "block";
+        });
+
+        // Cerrar carrito si se toca fuera de él
+        document.addEventListener("click", function () {
+            carritoElement.style.display = "none";
+        });
+
+        // Evita que el clic dentro del carrito lo cierre
+        carritoElement.addEventListener("click", function (event) {
+            event.stopPropagation();
+        });
+    }
 }
 
 // Funciones
