@@ -46,24 +46,23 @@ ul {
 }
 
 .submenu:hover #carrito {
+    min-width: 100%; /* Que ocupe todo el ancho disponible */
+    left: 0; /* Que se ajuste mejor en móviles */
+    right: auto; /* Evita que se salga de la pantalla */
+    padding: 10px; /* Reduce el padding */
     display: block;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    z-index: 1;
-    background-color: whitesmoke;
-    padding: 20px;
-    min-height: 100px;
-    min-width: 450px;
 }
 
-/* Diseño responsivo para móviles */
-@media (max-width: 600px) {
+@media (min-width: 550px) {
     .submenu:hover #carrito {
-        min-width: 100%; /* Que ocupe todo el ancho disponible */
-        left: 0; /* Que se ajuste mejor en móviles */
-        right: auto; /* Evita que se salga de la pantalla */
-        padding: 10px; /* Reduce el padding */
+        position: absolute;
+        right: 0;
+        top: 100%;
+        z-index: 1;
+        background-color: whitesmoke;
+        padding: 20px;
+        min-height: 100px;
+        min-width: 450px;
     }
 }
 
