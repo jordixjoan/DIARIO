@@ -48,18 +48,16 @@ async function procesarPago () {
 
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                items: [
-                    ...articulosCarrito.map(item => ({
+                items:
+                    articulosCarrito.map(item => ({
                     name: item.titulo,
                     quantity: item.cantidad,
                     price: item.precio,
                 })), 
-                {
+                shipping: {
                     name: "Gastos de Envío y Gestión",
-                    quantity: 1,
                     price: (gastosEnvio + gastosGestion).toFixed(2),
-                } 
-                ]
+                }
             }),
         });
 

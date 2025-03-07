@@ -29,7 +29,7 @@ app.use(express.json());
 // Endpoint para crear la sesión de pago con Stripe
 app.post("/create-checkout-session", async (req, res) => {
     try {
-        const { items } = req.body;
+        const { items shipping } = req.body;
         console.log(items);
         const lineItems = items.map(item => ({
             price_data: {
@@ -41,6 +41,21 @@ app.post("/create-checkout-session", async (req, res) => {
             },
             quantity: item.quantity,
         }));
+
+        // Agregar gastos de envío como un "servicio" sin cantidad visible
+        if (shipping && (shipping.price > 0)) {
+            lineItems.push({
+                price_data: {
+                    currency: "eur",
+                    product_data: {
+                        name: shipping.name,
+                        description: "Incluye los costes de envío y la gestión del pedido.",
+                    },
+                    unit_amount: shipping.price,
+                },
+                quantity: 1, // Esto es necesario, pero Stripe lo mostrará como un solo cargo
+            });
+        }
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
