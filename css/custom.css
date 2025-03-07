@@ -4,8 +4,9 @@ html {
 body {
     background-color: white
 }
-h1 {
-    text-align: center;
+.header h1 {
+    margin-left: 20px;
+    font-family: Castellar;
 }
 h2 {
     font-size: 3rem;
@@ -171,6 +172,10 @@ ul {
     display: flex; /* Habilita el uso de flexbox */
     align-items: 50px; /* Centra el contenido verticalmente */
     justify-content: center; /* Si también quieres centrarlo horizontalmente */
+    margin-top: 15px;
+    margin-right: 20px;
+    font-size: 1.9rem;
+    font-family: Bodoni MT;
 }
 
 
@@ -209,6 +214,12 @@ ul {
 .card h4 {
     margin-bottom: 5px;
 }
+
+.info-card h4 {
+    font-family: Bodoni MT;
+    font-size: 2rem;
+}
+
 .info-card .precio {
     text-decoration: line-through;
     font-size: 18px;
