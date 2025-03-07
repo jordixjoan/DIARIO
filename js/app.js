@@ -39,7 +39,7 @@ async function procesarPago () {
 
     // Calcular total y gastos de envío
     let totalCantidad = articulosCarrito.reduce((total, item) => total + item.cantidad, 0);
-    let gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 3) : 0;
+    let gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
     let gastosGestion = 0.49; // Puedes modificar este valor según necesites
 
     try {
@@ -225,13 +225,15 @@ function carritoHTML () {
     });
 
     // Calcular gastos de envío
-    let gastosEnvio = totalCantidad > 0 ? Math.min(1.99 + (totalCantidad - 1) * 0.50, 2.99) : 0;
+    let gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
+    let gastosGestion = 0.49;
+    let gastos = gastosEnvio +  gastosGestion;
 
-    let totalReal = total + gastosEnvio;
+    let totalReal = total + gastos;
 
     // Actualizar el total en el HTML
     document.getElementById("total-precio").textContent = `${total.toFixed(2)}€`;
-    document.getElementById("total-envio").textContent = `${gastosEnvio.toFixed(2)}€`;
+    document.getElementById("total-envio").textContent = `${gastos.toFixed(2)}€`;
     document.getElementById("total-real").textContent = `${totalReal.toFixed(2)}€`;
 
     // Actualizar la cantidad en el carrito

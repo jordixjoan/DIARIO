@@ -48,6 +48,15 @@ app.post("/create-checkout-session", async (req, res) => {
             mode: "payment",
             success_url: `${process.env.FRONTEND_URL}/success.html`,
             cancel_url: `${process.env.FRONTEND_URL}/cancel.html`,
+            
+            // Solicitar información del cliente
+            billing_address_collection: "required", // Pide la dirección de facturación
+            shipping_address_collection: {
+                allowed_countries: ["ES"], // Lista de países permitidos (puedes agregar más)
+            },
+            phone_number_collection: {
+                enabled: true, // Solicita el número de teléfono
+            }
         });
 
         res.json({ url: session.url });
