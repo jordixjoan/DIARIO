@@ -39,7 +39,7 @@ async function procesarPago () {
 
     // Calcular total y gastos de envío
     let totalCantidad = articulosCarrito.reduce((total, item) => total + item.cantidad, 0);
-    let gastosEnvio = totalCantidad > 0 ? Math.min(1.99 + (totalCantidad - 1) * 0.50, 2.99) : 0;
+    let gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 3) : 0;
     let gastosGestion = 0.49; // Puedes modificar este valor según necesites
 
     try {
@@ -49,7 +49,7 @@ async function procesarPago () {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 items: [
-                    articulosCarrito.map(item => ({
+                    ...articulosCarrito.map(item => ({
                     name: item.titulo,
                     quantity: item.cantidad,
                     price: item.precio,
