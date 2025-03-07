@@ -225,6 +225,13 @@ ul {
     margin: 0; /* Para eliminar cualquier margen extra que pueda generar desalineación */
 }
 
+.container .message {
+    margin: 40px 20px 20px 20px;
+}
+.container .message button {
+    margin-top: 20px;
+}
+
 .footer nav {
     flex: 1; /* Cada columna ocupará el 25% del contenedor */
     padding: 20px; /* Añade espacio interno en cada columna */
