@@ -77,7 +77,7 @@ app.post("/guardar-correo", async (req, res) => {
 
     try {
         // Llama a tu Google Apps Script (la URL del servicio web)
-        const response = await fetch("TU_URL_DEL_SCRIPT", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwxl9KLeNsUpidoDtuAZhsFJJb-Oy_e0-MHhovqK0pbebm2JAxbLSGWGHOtWYRpliE2/exec", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: email })
