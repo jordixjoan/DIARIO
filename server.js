@@ -12,8 +12,6 @@ const allowedOrigins = [
     "http://127.0.0.1:5500"          // Si usas Live Server u otro puerto
 ];
 
-console.log("hola");
-
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -70,5 +68,5 @@ app.post("/create-checkout-session", async (req, res) => {
 
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
