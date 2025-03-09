@@ -69,14 +69,13 @@ app.post("/create-checkout-session", async (req, res) => {
 // Ruta para guardar el correo
 app.post("/guardar-correo", async (req, res) => {
     const email = req.body.email;
-
+    console.log("guarda correo");
     // Verificar si se ha recibido un correo
     if (!email) {
         return res.status(400).json({ error: "Correo electrónico es requerido" });
     }
 
     try {
-        console.log("guarda correo");
         // Llama a tu Google Apps Script (la URL del servicio web)
         const response = await fetch("https://script.google.com/macros/s/AKfycbwxl9KLeNsUpidoDtuAZhsFJJb-Oy_e0-MHhovqK0pbebm2JAxbLSGWGHOtWYRpliE2/exec", {
             method: "POST",
