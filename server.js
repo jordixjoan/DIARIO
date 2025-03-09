@@ -66,7 +66,34 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 });
 
+// Ruta para guardar el correo
+app.post("/guardar-correo", async (req, res) => {
+    const email = req.body.email;
+
+    // Verificar si se ha recibido un correo
+    if (!email) {
+        return res.status(400).json({ error: "Correo electrónico es requerido" });
+    }
+
+    try {
+        // Llama a tu Google Apps Script (la URL del servicio web)
+        const response = await fetch("TU_URL_DEL_SCRIPT", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: email })
+        });
+
+        if (response.ok) {
+            res.status(200).json({ message: "Correo guardado con éxito" });
+        } else {
+            res.status(500).json({ error: "Error al guardar el correo" });
+        }
+    } catch (error) {
+        res.status(500).json({ error: "Error al conectar con el servidor de Google Sheets" });
+    }
+});
+
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`));

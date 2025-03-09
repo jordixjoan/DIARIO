@@ -255,3 +255,21 @@ function limpiarHTML () {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild);
     }
 }
+
+function guardarCorreo() {
+    var email = document.getElementById("email").value;
+    if (email.trim() === "") {
+        alert("Por favor, ingresa un correo válido.");
+        return;
+    }
+
+    // Enviar el correo al backend usando fetch
+    fetch("/guardar-correo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => alert("¡Correo guardado con éxito!"))
+    .catch(error => alert("Error al guardar el correo"));
+}
