@@ -76,6 +76,7 @@ app.post("/guardar-correo", async (req, res) => {
     }
 
     try {
+        console.log("guarda correo");
         // Llama a tu Google Apps Script (la URL del servicio web)
         const response = await fetch("https://script.google.com/macros/s/AKfycbwxl9KLeNsUpidoDtuAZhsFJJb-Oy_e0-MHhovqK0pbebm2JAxbLSGWGHOtWYRpliE2/exec", {
             method: "POST",
