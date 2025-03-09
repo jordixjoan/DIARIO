@@ -12,6 +12,8 @@ const allowedOrigins = [
     "http://127.0.0.1:5500"          // Si usas Live Server u otro puerto
 ];
 
+console.log("hola");
+
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
