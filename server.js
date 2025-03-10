@@ -8,6 +8,7 @@ const app = express();
 // Configurar CORS correctamente
 const allowedOrigins = [
     "https://jordixjoan.com",  // Tu frontend en GitHub Pages
+    "https://diario-production-1.up.railway.app",
     "http://127.0.0.1:5000",         // Backend local
     "http://127.0.0.1:5500"          // Si usas Live Server u otro puerto
 ];
