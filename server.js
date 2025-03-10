@@ -86,6 +86,8 @@ app.post("/guardar-correo", async (req, res) => {
         if (response.ok) {
             res.status(200).json({ message: "Correo guardado con éxito" });
         } else {
+            const responseText = await response.text();
+            console.log("Error al guardar correo:", responseText);
             res.status(500).json({ error: "Error al guardar el correo" });
         }
     } catch (error) {
@@ -96,4 +98,4 @@ app.post("/guardar-correo", async (req, res) => {
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`Server runnnning on port ${PORT}`));

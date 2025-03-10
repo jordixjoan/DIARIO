@@ -264,7 +264,7 @@ function guardarCorreo() {
     }
 
     // Enviar el correo al backend usando fetch
-    fetch("/guardar-correo", {
+    fetch("https://diario-production-1.up.railway.app/guardar-correo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email })
