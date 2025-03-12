@@ -258,6 +258,7 @@ function limpiarHTML () {
 
 function guardarCorreo() {
     var email = document.getElementById("email").value;
+    
     if (email.trim() === "") {
         alert("Por favor, ingresa un correo válido.");
         return;
@@ -269,7 +270,16 @@ function guardarCorreo() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email })
     })
-    .then(response => response.json())
-    .then(window.location.href = "/success_newsletter.html")
-    .catch(error => alert("Error al guardar el correo"));
+    .then(response => response.json())  // ✅ Espera la respuesta JSON
+    .then(data => {
+        if (data.success) {  // ✅ Verifica que el backend respondió con éxito
+            window.location.href = "/success_newsletter.html";  // ✅ Redirige al usuario
+        } else {
+            alert("Error al guardar el correo.");
+        }
+    })
+    .catch(error => {
+        console.error("Error en la solicitud:", error);
+        alert("Error al guardar el correo.");
+    });
 }
