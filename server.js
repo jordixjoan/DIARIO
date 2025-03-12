@@ -95,10 +95,10 @@ app.post("/guardar-correo", async (req, res) => {
     if (!email) {
         return res.status(400).json({ error: "Correo electrónico es requerido" });
     }
-
+    
     try {
         // Llama a tu Google Apps Script (la URL del servicio web)
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwxl9KLeNsUpidoDtuAZhsFJJb-Oy_e0-MHhovqK0pbebm2JAxbLSGWGHOtWYRpliE2/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyIL-3FZcyt1Y6V-9cZ-KheBV9BCGFY5ZnWi5Mq66-GBPogu3TjWmny2SP9QjqnbrtD/exec", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: email })
