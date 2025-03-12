@@ -89,7 +89,7 @@ app.post("/guardar-correo", async (req, res) => {
         });
 
         if (response.ok) {
-            res.status(200).json({ message: "Correo guardado con éxito" });
+            window.location.href = "/success_newsletter.html";  // Redirige si el fetch es exitoso
         } else {
             const responseText = await response.text();
             console.log("Error al guardar correo:", responseText);

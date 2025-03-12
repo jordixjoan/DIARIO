@@ -271,6 +271,14 @@ ul {
     text-decoration: none;
 }
 
+.enlace {
+    color: #333;
+}
+
+.enlace:hover {
+    text-decoration: underline;
+}
+
 .footer .enlace:hover {
     text-decoration: underline;
 }
