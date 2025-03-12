@@ -58,11 +58,21 @@ app.post("/create-checkout-session", async (req, res) => {
             billing_address_collection: "required", // Pide la dirección de facturación
             shipping_address_collection: {
                 allowed_countries: [
-                    "AL", "AD", "AT", "AX", "BE", "BA", "BG", "CH", "CY", "CZ", "DE", "DK", 
-                    "EE", "ES", "FI", "FO", "FR", "GB", "GE", "GG", "GI", "GR", "HR", "HU", 
-                    "IE", "IM", "IS", "IT", "JE", "LI", "LT", "LU", "LV", "MC", "MD", "ME", 
-                    "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "SE", "SI", "SJ", "SK", 
-                    "SM", "UA", "VA", "XK"
+                    "DE", // Alemania
+                    "FR", // Francia
+                    "GB", // Reino Unido
+                    "IT", // Italia
+                    "ES", // España
+                    "NL", // Países Bajos
+                    "SE", // Suecia
+                    "CH", // Suiza
+                    "BE", // Bélgica
+                    "PL", // Polonia
+                    "AT", // Austria
+                    "IE", // Irlanda
+                    "DK", // Dinamarca
+                    "FI", // Finlandia
+                    "PT"  // Portugal
                 ]
             },                    
             phone_number_collection: {
