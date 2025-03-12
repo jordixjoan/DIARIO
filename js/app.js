@@ -44,6 +44,7 @@ async function procesarPago () {
     let gastosGestion = 0.49; // Puedes modificar este valor según necesites
 
     const paisSeleccionado = document.getElementById('pais-select').value;
+    console.log(paisSeleccionado);
     // Calcular gastos de envío
     if(paisSeleccionado == 'ES') {
         gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
@@ -51,6 +52,7 @@ async function procesarPago () {
     else {
         gastosEnvio = totalCantidad > 0 ? Math.min(2.50 + (totalCantidad - 1) * 0.50, 3.50) : 0;
     }
+    console.log(gastosEnvio);
 
     try {
         const response = await fetch("https://diario-production-1.up.railway.app/create-checkout-session", {
