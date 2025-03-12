@@ -116,6 +116,10 @@ ul {
 }
 
 #gastos-envio {
+    margin-top: 0px; /* Ajusta el valor según necesites */
+}
+
+#seleccion-pais {
     margin-top: -20px; /* Ajusta el valor según necesites */
 }
 

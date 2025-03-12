@@ -161,6 +161,7 @@ function carritoHTML () {
         mensajeVacio.style.display = 'block'; // Mostrar mensaje
         document.getElementById("total-carrito").style.display = 'none';
         document.getElementById("gastos-envio").style.display = 'none';
+        document.getElementById("seleccion-pais").style.display = 'none';
         document.getElementById("total-real-carrito").style.display = 'none';
         vaciarCarritoBtn.style.display = 'none'; // Ocultar botón "Vaciar carrito"
         procederCompraBtn.style.display = 'none'; // Ocultar botón "Proceder a compra"
@@ -172,6 +173,7 @@ function carritoHTML () {
     document.getElementById("total-carrito").style.display = 'block';
     document.getElementById("gastos-envio").style.display = 'block';
     document.getElementById("total-real-carrito").style.display = 'block';
+    document.getElementById("seleccion-pais").style.display = 'block';
     mensajeVacio.style.display = 'none'; // Ocultar mensaje
     vaciarCarritoBtn.style.display = 'block'; // Mostrar botón "Vaciar carrito"
     procederCompraBtn.style.display = 'block'; // Mostrar botón "Proceder a compra"
@@ -225,9 +227,20 @@ function carritoHTML () {
         contenedorCarrito.appendChild(row2);
     });
 
-    // Calcular gastos de envío
-    let gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
+
+    const paisSeleccionado = document.getElementById('pais-select').value;
+    console.log(paisSeleccionado);
     let gastosGestion = 0.49;
+    let gastosEnvio;
+
+    // Calcular gastos de envío
+    if(paisSeleccionado == 'ES') {
+        gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
+    }
+    else {
+        gastosEnvio = totalCantidad > 0 ? Math.min(2.50 + (totalCantidad - 1) * 0.50, 3.50) : 0;
+    }
+
     let gastos = gastosEnvio +  gastosGestion;
 
     let totalReal = total + gastos;
