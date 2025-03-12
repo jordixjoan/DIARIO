@@ -64,7 +64,7 @@ app.post("/create-checkout-session", async (req, res) => {
                     "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", 
                     "SJ", "SK", "SM", "UA", "VA", "XK"
                 ]
-            }         
+            },         
             phone_number_collection: {
                 enabled: true, // Solicita el número de teléfono
             }
