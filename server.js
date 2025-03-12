@@ -57,8 +57,11 @@ app.post("/create-checkout-session", async (req, res) => {
             // Solicitar información del cliente
             billing_address_collection: "required", // Pide la dirección de facturación
             shipping_address_collection: {
-                allowed_countries: ["ES"], // Lista de países permitidos (puedes agregar más)
-            },
+                allowed_countries: [
+                    "ES", "PT", "FR", "IT", "DE", "BE", "NL", "LU", "IE", "AT", "PL", "CZ", "SK", "HU", "SI", "HR", "RO", "BG", "SE", "FI", "DK", "EE", "LV", "LT", "GR", "CY", "MT", 
+                    "NO", "IS", "CH", "LI", "UK", "AL", "RS", "ME", "MK", "BA", "XK" // Incluye países no UE pero en Europa
+                ]
+            },            
             phone_number_collection: {
                 enabled: true, // Solicita el número de teléfono
             }
