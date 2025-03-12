@@ -42,6 +42,15 @@ async function procesarPago () {
     let totalCantidad = articulosCarrito.reduce((total, item) => total + item.cantidad, 0);
     let gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
     let gastosGestion = 0.49; // Puedes modificar este valor según necesites
+    
+    const paisSeleccionado = document.getElementById('pais-select').value;
+    // Calcular gastos de envío
+    if(paisSeleccionado == 'ES') {
+        gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
+    }
+    else {
+        gastosEnvio = totalCantidad > 0 ? Math.min(2.50 + (totalCantidad - 1) * 0.50, 3.50) : 0;
+    }
 
     try {
         const response = await fetch("https://diario-production-1.up.railway.app/create-checkout-session", {
@@ -229,7 +238,6 @@ function carritoHTML () {
 
 
     const paisSeleccionado = document.getElementById('pais-select').value;
-    console.log(paisSeleccionado);
     let gastosGestion = 0.49;
     let gastosEnvio;
 
