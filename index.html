@@ -106,7 +106,10 @@
             <div class="container">
                 <h4 id="NEWSLETTER" style="text-align:center; font-size: 2rem;">Suscríbete al NEWSLETTER</h4>
                 <input type="text" id="email" class="u-full-width" name="email" placeholder="Tu correo electrónico">
-                <button onclick="guardarCorreo()" class="u-full-width button-primary button">Suscribirse</button>
+                <button onclick="guardarCorreo()"id="submitBtn" class="u-full-width button-primary button">Suscribirse</button>
+                <div id="loader" style="display:none;" >
+                    ⏳ Enviando...
+                </div>
             </div>
         </div>
 

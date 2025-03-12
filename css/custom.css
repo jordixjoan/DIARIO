@@ -56,20 +56,22 @@ ul {
     min-height: 100px;
     min-width: 300px; /* Tamaño mínimo en pantallas grandes */
     max-width: 90vw; /* Limita el ancho máximo al 90% de la pantalla */
-    overflow: auto; /* Agrega scroll si el contenido es muy grande */
+    max-height: 80vh; /* No supera el 90% de la pantalla en altura */
+    overflow-y: auto; /* Scroll solo si es necesario */
+    overflow-x: hidden; /* Evita scroll horizontal */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Padding y border no afectan el tamaño */
 }
 
 /* 📌 Ajustes en pantallas pequeñas */
 @media (max-width: 600px) {
     #carrito {
-        right: auto; /* Desactiva el alineamiento derecho */
-        left: 50%; /* Centra el carrito */
-        transform: translateX(-50%); /* Asegura que quede bien alineado */
-        width: 90vw; /* Se adapta al 90% del ancho de la pantalla */
-        min-width: 250px; /* No se hará más pequeño de 250px */
-        max-width: 90vw; /* Evita que se desborde en pantallas chicas */
+        right: unset; /* Limpia la alineación derecha */
+        left: 50%; /* Centra horizontalmente */
+        transform: translateX(-50%); /* Corrige el centro exacto */
+        width: min(90vw, 400px); /* 90% del ancho de la pantalla, pero sin superar 400px */
+        min-width: 250px; /* No más pequeño de 250px */
     }
 }
 

@@ -258,11 +258,18 @@ function limpiarHTML () {
 
 function guardarCorreo() {
     var email = document.getElementById("email").value;
+    var submitBtn = document.getElementById("submitBtn");
+    var loader = document.getElementById("loader");
     
     if (email.trim() === "") {
         alert("Por favor, ingresa un correo válido.");
         return;
     }
+
+    // 🔄 Muestra el loader y deshabilita el botón
+    loader.style.display = "block";
+    submitBtn.style.display = "none";
+    submitBtn.disabled = true;
 
     // Enviar el correo al backend usando fetch
     fetch("https://diario-production-1.up.railway.app/guardar-correo", {
@@ -276,10 +283,17 @@ function guardarCorreo() {
             window.location.href = "/success/newsletter";  // ✅ Redirige al usuario
         } else {
             alert("Error al guardar el correo.");
+            resetBtnNewsletter();
         }
     })
     .catch(error => {
         console.error("Error en la solicitud:", error);
         alert("Error al guardar el correo.");
+        resetBtnNewsletter();
     });
+}
+
+function resetBtnNewsletter() {
+    loader.style.display = "none";
+    submitBtn.disabled = false;
 }
