@@ -273,7 +273,7 @@ function guardarCorreo() {
     .then(response => response.json())  // ✅ Espera la respuesta JSON
     .then(data => {
         if (data.success) {  // ✅ Verifica que el backend respondió con éxito
-            window.location.href = "/success_newsletter.html";  // ✅ Redirige al usuario
+            window.location.href = "/success/newsletter";  // ✅ Redirige al usuario
         } else {
             alert("Error al guardar el correo.");
         }
