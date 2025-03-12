@@ -28,7 +28,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Servidor en funcionamiento');
+    res.redirect('https://www.jordixjoan.com');
 });
 
 // Endpoint para crear la sesión de pago con Stripe
