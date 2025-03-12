@@ -58,13 +58,13 @@ app.post("/create-checkout-session", async (req, res) => {
             billing_address_collection: "required", // Pide la dirección de facturación
             shipping_address_collection: {
                 allowed_countries: [
-                    "AL", "AD", "AT", "BY", "BE", "BA", "BG", "CH", "CY", "CZ", "DE", "DK", 
+                    "AL", "AD", "AT", "AX", "BE", "BA", "BG", "CH", "CY", "CZ", "DE", "DK", 
                     "EE", "ES", "FI", "FO", "FR", "GB", "GE", "GG", "GI", "GR", "HR", "HU", 
-                    "IE", "IM", "IS", "IT", "JE", "KV", "LI", "LT", "LU", "LV", "MC", "MD", 
-                    "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", 
-                    "SJ", "SK", "SM", "UA", "VA", "XK"
+                    "IE", "IM", "IS", "IT", "JE", "LI", "LT", "LU", "LV", "MC", "MD", "ME", 
+                    "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "SE", "SI", "SJ", "SK", 
+                    "SM", "UA", "VA", "XK"
                 ]
-            },         
+            },                    
             phone_number_collection: {
                 enabled: true, // Solicita el número de teléfono
             }
