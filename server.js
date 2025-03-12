@@ -58,11 +58,11 @@ app.post("/create-checkout-session", async (req, res) => {
             billing_address_collection: "required", // Pide la dirección de facturación
             shipping_address_collection: {
                 allowed_countries: [
+                    "ES", // España
                     "DE", // Alemania
                     "FR", // Francia
                     "GB", // Reino Unido
                     "IT", // Italia
-                    "ES", // España
                     "NL", // Países Bajos
                     "SE", // Suecia
                     "CH", // Suiza
