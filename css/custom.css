@@ -248,7 +248,7 @@ ul {
 .footer nav {
     flex: 1; /* Cada columna ocupará el 25% del contenedor */
     padding: 20px; /* Añade espacio interno en cada columna */
-    background-color: white; /* Fondo claro para las columnas */
+    background-color: #D1D1D1; /* Fondo claro para las columnas */
     border-radius: 8px; /* Bordes redondeados */
     box-sizing: border-box; /* Incluye padding en el tamaño total de la columna */
     margin: 0 10px; /* Espacio horizontal entre las columnas */
@@ -258,6 +258,10 @@ ul {
     margin-bottom: 10px; /* Espacio debajo del título */
     font-size: 18px;
     font-weight: bold;
+}
+
+.footer {
+    background-color: #D1D1D1;
 }
 
 .footer p {
