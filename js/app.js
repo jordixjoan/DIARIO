@@ -270,6 +270,6 @@ function guardarCorreo() {
         body: JSON.stringify({ email: email })
     })
     .then(response => response.json())
-    .then(data => alert("¡Correo guardado con éxito!"))
+    .then(window.location.href = "/success_newsletter.html")
     .catch(error => alert("Error al guardar el correo"));
 }
