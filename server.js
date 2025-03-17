@@ -81,51 +81,17 @@ app.post("/create-checkout-session", async (req, res) => {
             }
         });
 
+        const sessionactual = await stripe.checkout.sessions.retrieve(sessionId);
+
+        const customerDetails = sessionactual.customer_details;
+        console.log(customerDetails);
+
         res.json({ url: session.url });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Error al crear la sesión de pago" });
     }
 });
-
-app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
-    const sig = req.headers['stripe-signature'];
-
-    let event;
-    try {
-        event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
-    } catch (err) {
-        console.error('Webhook signature verification failed.', err.message);
-        return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-
-    if (event.type === 'checkout.session.completed') {
-        console.log('Pago recibido:', event.data.object);
-        // Aquí puedes actualizar tu base de datos o enviar un correo de confirmación
-    }
-
-    res.json({ received: true });
-});
-
-async function sendEmail(to, amount, currency) {
-    let transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: "tuemail@gmail.com",
-            pass: "tucontraseña"
-        }
-    });
-
-    let mailOptions = {
-        from: "tuemail@gmail.com",
-        to,
-        subject: "Compra exitosa",
-        text: `Gracias por tu compra. Has pagado ${amount} ${currency}.`
-    };
-
-    await transporter.sendMail(mailOptions);
-}
-
 
 // Ruta para guardar el correo
 app.post("/guardar-correo", async (req, res) => {
