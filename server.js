@@ -81,7 +81,7 @@ app.post("/create-checkout-session", async (req, res) => {
             }
         });
 
-        const sessionactual = await stripe.checkout.sessions.retrieve(session.Id);
+        const sessionactual = await stripe.checkout.sessions.retrieve(session.id);
 
         const customerDetails = sessionactual.customer_details;
         console.log(customerDetails);
