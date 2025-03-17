@@ -2,7 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const endpointSecret = require("stripe")(process.env.STRIPE_WEBHOOK_SECRET);
+const bodyParser = require("body-parser");  // Asegúrate de agregar esta línea
+const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 const app = express();
 
@@ -81,16 +82,41 @@ app.post("/create-checkout-session", async (req, res) => {
             }
         });
 
-        const sessionactual = await stripe.checkout.sessions.retrieve(session.id);
-
-        const customerDetails = sessionactual.customer_details;
-        console.log(customerDetails);
-
         res.json({ url: session.url });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Error al crear la sesión de pago" });
     }
+});
+
+app.use(bodyParser.raw({ type: "application/json" }));
+
+// Ruta para manejar los eventos de Stripe
+app.post("/webhook", async (req, res) => {
+    console.log("🔔 Webhook recibido");
+    const sig = req.headers["stripe-signature"];
+    let event;
+
+    try {
+        event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+    } catch (err) {
+        console.error("Webhook signature verification failed:", err.message);
+        return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    // Manejar el evento de sesión completada
+    if (event.type === "checkout.session.completed") {
+        const session = event.data.object;
+        
+        console.log("Pago completado con éxito:", session);
+
+        const customerDetails = session.customer_details;
+        console.log("Datos del cliente:", customerDetails);
+
+        // Aquí puedes guardar los datos en tu base de datos o enviarlos donde los necesites
+    }
+
+    res.status(200).json({ received: true });
 });
 
 // Ruta para guardar el correo
