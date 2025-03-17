@@ -87,6 +87,44 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 });
 
+app.post("/webhook", async (req, res) => {
+    const event = req.body;
+
+    if (event.type === "checkout.session.completed") {
+        const session = event.data.object;
+        const email = session.customer_email;
+        const amount = session.amount_total / 100; // Convertir a moneda decimal
+        const currency = session.currency.toUpperCase();
+
+        // Enviar correo de confirmación
+        await sendEmail(email, amount, currency);
+
+        res.status(200).send({ received: true });
+    } else {
+        res.status(400).send({ error: "Evento no manejado" });
+    }
+});
+
+async function sendEmail(to, amount, currency) {
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "tuemail@gmail.com",
+            pass: "tucontraseña"
+        }
+    });
+
+    let mailOptions = {
+        from: "tuemail@gmail.com",
+        to,
+        subject: "Compra exitosa",
+        text: `Gracias por tu compra. Has pagado ${amount} ${currency}.`
+    };
+
+    await transporter.sendMail(mailOptions);
+}
+
+
 // Ruta para guardar el correo
 app.post("/guardar-correo", async (req, res) => {
     const email = req.body.email;
