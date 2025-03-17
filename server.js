@@ -27,6 +27,7 @@ app.use(cors({
     allowedHeaders: "Content-Type,Authorization"
 }));
 
+app.use("/webhook", express.raw({ type: "application/json" }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -88,8 +89,6 @@ app.post("/create-checkout-session", async (req, res) => {
         res.status(500).json({ error: "Error al crear la sesión de pago" });
     }
 });
-
-app.use(bodyParser.raw({ type: "application/json" }));
 
 // Ruta para manejar los eventos de Stripe
 app.post("/webhook", async (req, res) => {
