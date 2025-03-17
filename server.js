@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const endpointSecret = require("stripe")(process.env.STRIPE_WEBHOOK_SECRET);
 
 const app = express();
 
@@ -87,28 +88,23 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 });
 
-app.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
-    let event;
+app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
+    const sig = req.headers['stripe-signature'];
 
+    let event;
     try {
-        const sig = req.headers["stripe-signature"];
-        event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+        event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
     } catch (err) {
-        console.error("⚠️  Error verificando el webhook:", err.message);
+        console.error('Webhook signature verification failed.', err.message);
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    if (event.type === "checkout.session.completed") {
-        const session = event.data.object;
-        const email = session.customer_email;
-        const amount = session.amount_total / 100;
-        const currency = session.currency.toUpperCase();
-
-        // Llamar a la función de email
-        await sendEmail(email, amount, currency);
+    if (event.type === 'checkout.session.completed') {
+        console.log('Pago recibido:', event.data.object);
+        // Aquí puedes actualizar tu base de datos o enviar un correo de confirmación
     }
 
-    res.status(200).send({ received: true });
+    res.json({ received: true });
 });
 
 async function sendEmail(to, amount, currency) {
