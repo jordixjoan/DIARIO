@@ -107,11 +107,16 @@ app.post("/webhook", async (req, res) => {
     if (event.type === "checkout.session.completed") {
         const session = event.data.object;
         
-        console.log("Pago completado con éxito:", session);
+        // Obtener detalles de la sesión, incluyendo los productos comprados
+        const sessionWithLineItems = await stripe.checkout.sessions.retrieve(session.id, {
+            expand: ["line_items"],
+        });
+
+        const lineItems = sessionWithLineItems.line_items.data;
 
         const customerDetails = session.customer_details;
         console.log("Datos del cliente:", customerDetails);
-
+        console.log("Productos comprados:", lineItems);
         // Aquí puedes guardar los datos en tu base de datos o enviarlos donde los necesites
     }
 
