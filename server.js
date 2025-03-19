@@ -107,12 +107,18 @@ app.post("/webhook", async (req, res) => {
     if (event.type === "checkout.session.completed") {
         const session = event.data.object;
         
-        // Obtener detalles de la sesión, incluyendo los productos comprados
+        // Recuperar la sesión con productos expandidos
         const sessionWithLineItems = await stripe.checkout.sessions.retrieve(session.id, {
-            expand: ["line_items"],
+            expand: ["line_items.data.price.product"],
         });
 
-        const lineItems = sessionWithLineItems.line_items.data;
+        const lineItems = sessionWithLineItems.line_items.data.map(item => ({
+            id: item.id,
+            quantity: item.quantity,
+            price: item.price.unit_amount / 100, // Convertir a euros
+            currency: item.currency,
+            description: item.description || item.price.product?.name, // Usar 'name' si no hay 'description'
+        }));
 
         const customerDetails = session.customer_details;
         console.log("Datos del cliente:", customerDetails);
