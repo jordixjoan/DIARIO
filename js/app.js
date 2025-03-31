@@ -174,6 +174,7 @@ function carritoHTML () {
         document.getElementById("gastos-envio").style.display = 'none';
         document.getElementById("seleccion-pais").style.display = 'none';
         document.getElementById("total-real-carrito").style.display = 'none';
+        document.getElementById("aviso-correos").style.display = 'none';
         vaciarCarritoBtn.style.display = 'none'; // Ocultar botón "Vaciar carrito"
         procederCompraBtn.style.display = 'none'; // Ocultar botón "Proceder a compra"
         cantidadCarrito.textContent = 0; // Actualizar contador
@@ -185,6 +186,7 @@ function carritoHTML () {
     document.getElementById("gastos-envio").style.display = 'block';
     document.getElementById("total-real-carrito").style.display = 'block';
     document.getElementById("seleccion-pais").style.display = 'block';
+    document.getElementById("aviso-correos").style.display = 'block';
     mensajeVacio.style.display = 'none'; // Ocultar mensaje
     vaciarCarritoBtn.style.display = 'block'; // Mostrar botón "Vaciar carrito"
     procederCompraBtn.style.display = 'block'; // Mostrar botón "Proceder a compra"
@@ -320,4 +322,13 @@ function guardarCorreo() {
 function resetBtnNewsletter() {
     loader.style.display = "none";
     submitBtn.disabled = false;
+}
+
+function cambiarImagen(hover,inn,outt) {
+    let img = document.getElementById("imagen");
+    img.style.opacity = "0.5"; // Reducimos la opacidad para un efecto de fundido
+    setTimeout(() => {
+        img.src = hover ? inn : outt;
+        img.style.opacity = "1"; // Restauramos la opacidad después del cambio
+    }, 200); // Pequeña espera para suavizar el cambio
 }

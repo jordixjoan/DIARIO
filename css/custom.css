@@ -4,9 +4,10 @@ html {
 body {
     background-color: white
 }
-.header h1 {
+.logo{
     margin-left: 20px;
-    font-family: Castellar;
+    margin-top: -5px;
+    height: 50px;
 }
 h2 {
     font-size: 3rem;
@@ -178,7 +179,7 @@ ul {
     display: flex; /* Habilita el uso de flexbox */
     align-items: 50px; /* Centra el contenido verticalmente */
     justify-content: center; /* Si también quieres centrarlo horizontalmente */
-    margin-top: 15px;
+    margin-top: 10px;
     margin-right: 20px;
     font-size: 1.9rem;
     font-family: Bodoni MT;
