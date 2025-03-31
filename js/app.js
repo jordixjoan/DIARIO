@@ -323,12 +323,3 @@ function resetBtnNewsletter() {
     loader.style.display = "none";
     submitBtn.disabled = false;
 }
-
-function cambiarImagen(hover,inn,outt) {
-    let img = document.getElementById("imagen");
-    img.style.opacity = "0.5"; // Reducimos la opacidad para un efecto de fundido
-    setTimeout(() => {
-        img.src = hover ? inn : outt;
-        img.style.opacity = "1"; // Restauramos la opacidad después del cambio
-    }, 200); // Pequeña espera para suavizar el cambio
-}
