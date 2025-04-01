@@ -27,8 +27,46 @@ app.use(cors({
     allowedHeaders: "Content-Type,Authorization"
 }));
 
-app.use("/webhook", express.raw({ type: "application/json" }));
 app.use(express.json());
+
+// Ruta para manejar los eventos de Stripe
+app.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
+    console.log("🔔 Webhook recibido");
+    const sig = req.headers["stripe-signature"];
+    let event;
+
+    try {
+        event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+    } catch (err) {
+        console.error("Webhook signature verification failed:", err.message);
+        return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    // Manejar el evento de sesión completada
+    if (event.type === "checkout.session.completed") {
+        const session = event.data.object;
+        
+        // Recuperar la sesión con productos expandidos
+        const sessionWithLineItems = await stripe.checkout.sessions.retrieve(session.id, {
+            expand: ["line_items.data.price.product"],
+        });
+
+        const lineItems = sessionWithLineItems.line_items.data.map(item => ({
+            id: item.id,
+            quantity: item.quantity,
+            price: item.price.unit_amount / 100, // Convertir a euros
+            currency: item.currency,
+            description: item.description || item.price.product?.name, // Usar 'name' si no hay 'description'
+        }));
+
+        const customerDetails = session.customer_details;
+        console.log("Datos del cliente:", customerDetails);
+        console.log("Productos comprados:", lineItems);
+        // Aquí puedes guardar los datos en tu base de datos o enviarlos donde los necesites
+    }
+
+    res.status(200).json({ received: true });
+});
 
 app.get('/', (req, res) => {
     res.redirect('https://www.jordixjoan.com');
@@ -90,45 +128,6 @@ app.post("/create-checkout-session", async (req, res) => {
     }
 });
 
-// Ruta para manejar los eventos de Stripe
-app.post("/webhook", async (req, res) => {
-    console.log("🔔 Webhook recibido");
-    const sig = req.headers["stripe-signature"];
-    let event;
-
-    try {
-        event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
-    } catch (err) {
-        console.error("Webhook signature verification failed:", err.message);
-        return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-
-    // Manejar el evento de sesión completada
-    if (event.type === "checkout.session.completed") {
-        const session = event.data.object;
-        
-        // Recuperar la sesión con productos expandidos
-        const sessionWithLineItems = await stripe.checkout.sessions.retrieve(session.id, {
-            expand: ["line_items.data.price.product"],
-        });
-
-        const lineItems = sessionWithLineItems.line_items.data.map(item => ({
-            id: item.id,
-            quantity: item.quantity,
-            price: item.price.unit_amount / 100, // Convertir a euros
-            currency: item.currency,
-            description: item.description || item.price.product?.name, // Usar 'name' si no hay 'description'
-        }));
-
-        const customerDetails = session.customer_details;
-        console.log("Datos del cliente:", customerDetails);
-        console.log("Productos comprados:", lineItems);
-        // Aquí puedes guardar los datos en tu base de datos o enviarlos donde los necesites
-    }
-
-    res.status(200).json({ received: true });
-});
-
 // Ruta para guardar el correo
 app.post("/guardar-correo", async (req, res) => {
     const email = req.body.email;
@@ -157,7 +156,6 @@ app.post("/guardar-correo", async (req, res) => {
         res.status(500).json({ error: "Error al conectar con el servidor de Google Sheets" });
     }
 });
-
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
