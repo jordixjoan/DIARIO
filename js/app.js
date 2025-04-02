@@ -201,7 +201,7 @@ function carritoHTML () {
         // Columna de imagen con rowspan para ocupar dos filas
         const imagenTd = document.createElement('td');
         imagenTd.rowSpan = 2;
-        imagenTd.innerHTML = `<img src="${curso.imagen}" width="100">`;
+        imagenTd.innerHTML = `<img src="${curso.imagen}" width="60">`;
 
         // Columna de título
         const tituloTd = document.createElement('td');
@@ -221,7 +221,7 @@ function carritoHTML () {
 
         // Columna de cantidad con botones + y -
         const cantidadTd = document.createElement('td');
-        cantidadTd.innerHTML = `<span>Cantidad: </span>
+        cantidadTd.innerHTML = `<span style='margin-left:15px;'>Cantidad: </span>
         ${curso.cantidad > 1 ? `<button class="disminuir-cantidad" data-id="${curso.id}">−</button>` : ""}
             <span>${curso.cantidad}</span>
             <button class="aumentar-cantidad" data-id="${curso.id}">+</button>
