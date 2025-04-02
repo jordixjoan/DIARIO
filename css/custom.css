@@ -112,16 +112,7 @@ ul {
     box-sizing: border-box; /* Padding y border no afectan el tamaño */
 }
 
-/* 📌 Ajustes en pantallas pequeñas */
-@media (max-width: 600px) {
-    #carrito {
-        right: unset; /* Limpia la alineación derecha */
-        left: 50%; /* Centra horizontalmente */
-        transform: translateX(-50%); /* Corrige el centro exacto */
-        width: min(90vw, 400px); /* 90% del ancho de la pantalla, pero sin superar 400px */
-        min-width: 250px; /* No más pequeño de 250px */
-    }
-}
+
 
 .submenu:hover #carrito {
     display: block;
