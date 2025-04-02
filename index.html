@@ -22,52 +22,37 @@
     </head>
 
     <body>
-        <header id="header" class="header">
+        <header class="header">
             <div class="container">
-                <div class="row">
-                    <div class="four columns">
-                        <img src="/img/jxj.png" alt="Logo JXJ" class="logo">
-                    </div>
-                    <div class="two columns u-pull-right">
-                        <ul>
-                            <li class="submenu">
-                                <a href="#" id="mostrar-carrito">Carrito (<span id="cantidad-carrito">0</span>)</a>
-
-                                <div id="carrito">
-                                    <h4>Mi carrito</h4>
-                                    <table id="lista-carrito" class="u-full-width">
-                                        <tbody></tbody>
-                                    </table>
-
-                                    <div id="mensaje-vacio" style="display: none;">
-                                        <p>El carrito está vacío</p>
-                                    </div>
-
-                                    <div id="total-carrito" style="display: none;">
-                                        <p>Subtotal: <span id="total-precio">0.00€</span></p>
-                                    </div>
-
-                                    <div id="seleccion-pais">
-                                        <select id="pais-select">
-                                            <option value="ES">España</option>
-                                            <option value="EU">Resto de Europa</option>
-                                        </select>
-                                    </div>
-
-                                    <div id="gastos-envio" style="display: none;">
-                                        <p>Gastos de envío y gestión: <span id="total-envio">0.00€</span></p>
-                                    </div>
-
-                                    <div id="total-real-carrito" style="display: none;">
-                                        <p>Total: <span id="total-real">0.00€</span></p>
-                                    </div>
-
-                                    <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
-                                    <a href="#" id="proceder-compra" class="button u-full-width">Proceder compra</a>
-                                    <p id="aviso-correos" style="font-size: 10px;">Al hacer una compra, aceptas recibir correos de jordixjoan.</p>
-                                </div>
-                            </li>
-                        </ul>
+                <div class="header-content">
+                    <img src="/img/jxj.png" alt="Logo JXJ" class="logo">
+                    <div class="cart">
+                        <a href="#" id="mostrar-carrito">Carrito (<span id="cantidad-carrito">0</span>)</a>
+                        <div id="carrito" class="cart-dropdown">
+                            <h4>Mi carrito</h4>
+                            <table id="lista-carrito">
+                                <tbody></tbody>
+                            </table>
+                            <p id="mensaje-vacio" style="display: none;">El carrito está vacío</p>
+                            <div id="total-carrito" style="display: none;">
+                                <p>Subtotal: <span id="total-precio">0.00€</span></p>
+                            </div>
+                            <div id="seleccion-pais">
+                                <select id="pais-select">
+                                    <option value="ES">España</option>
+                                    <option value="EU">Resto de Europa</option>
+                                </select>
+                            </div>
+                            <div id="gastos-envio" style="display: none;">
+                                <p>Gastos de envío y gestión: <span id="total-envio">0.00€</span></p>
+                            </div>
+                            <div id="total-real-carrito" style="display: none;">
+                                <p>Total: <span id="total-real">0.00€</span></p>
+                            </div>
+                            <a href="#" id="vaciar-carrito" class="button">Vaciar Carrito</a>
+                            <a href="#" id="proceder-compra" class="button">Proceder compra</a>
+                            <p id="aviso-correos">Al hacer una compra, aceptas recibir correos de jordixjoan.</p>
+                        </div>
                     </div>
                 </div>
             </div>
