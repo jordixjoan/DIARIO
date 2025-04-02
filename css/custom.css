@@ -58,14 +58,6 @@ h4 {
     .header-content {
         flex-direction: row;
     }
-    .cart-dropdown {
-        position: fixed;
-        top: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 400px;
-    }
 }
 
 
@@ -113,8 +105,6 @@ ul {
     box-sizing: border-box; /* Padding y border no afectan el tamaño */
 }
 
-
-
 .submenu:hover #carrito {
     display: block;
     position: absolute;
@@ -124,22 +114,9 @@ ul {
     background-color: whitesmoke;
     padding: 20px;
     min-height: 100px;
-    min-width: 450px;
+    min-width: 300px;
 }
 
-/* Diseño responsivo para móviles */
-@media (max-width: 600px) {
-    .submenu:hover #carrito {
-        position: absolute;
-        right: 0;
-        top: 100%;
-        z-index: 1;
-        background-color: whitesmoke;
-        padding: 20px;
-        min-height: 100px;
-        min-width: 450px;
-    }
-}
 
 .disminuir-cantidad,
 .aumentar-cantidad {
