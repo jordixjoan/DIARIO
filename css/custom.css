@@ -24,6 +24,7 @@ header {
 @media (min-width: 750px) {
     header {
         text-align: left;
+        display: flex;
     }
 }
 .borrar-curso {
