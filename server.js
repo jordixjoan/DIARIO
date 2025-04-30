@@ -27,8 +27,6 @@ app.use(cors({
     allowedHeaders: "Content-Type,Authorization"
 }));
 
-app.use(express.json());
-
 // Ruta para manejar los eventos de Stripe
 app.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
     console.log("🔔 Webhook recibido");
@@ -68,6 +66,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
     res.status(200).json({ received: true });
 });
 
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.redirect('https://www.jordixjoan.com');
