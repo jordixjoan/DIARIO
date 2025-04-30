@@ -60,7 +60,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
         const lineItems = sessionWithLineItems.line_items.data.map(item => ({
             id: item.id,
             quantity: item.quantity,
-            price: item.price.unit_amount/100,
+            price: item.price ? parseFloat(item.price.unit_amount / 100) : 0,
             currency: item.currency,
             description: item.description || item.price.product?.name, // Usar 'name' si no hay 'description'
         }));
@@ -68,6 +68,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
         const customerDetails = session.customer_details;
         console.log("Datos del cliente:", customerDetails);
         console.log("Productos comprados:", lineItems);
+        console.log("Precio enviado:", lineItems.price);
         // Aquí puedes guardar los datos en tu base de datos o enviarlos donde los necesites
 
         const appsScriptUrl = "https://script.google.com/macros/s/AKfycbx8E2S-XxhTfOd2vpck-RWDBlYfjphCSHaErbKVztgwKCLsZ6zl-elfkKLcQToATFY/exec";
@@ -83,7 +84,11 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
                     id: session.id,
                     customer_details: customerDetails,
                 },
-                line_items: lineItems,
+                line_items: lineItems.map(item => ({
+                    price: parseFloat(item.price), // Asegúrate de enviar como número
+                    currency: item.currency,
+                    description: item.description,
+                }))
                 },
             }),
         });
