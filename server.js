@@ -27,6 +27,11 @@ app.use(cors({
     allowedHeaders: "Content-Type,Authorization"
 }));
 
+app.use((req, res, next) => {
+    console.log("📥 Request:", req.method, req.originalUrl);
+    next();
+  });
+
 // Ruta para manejar los eventos de Stripe
 app.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
     console.log("🔍 Tipo de body:", typeof req.body); 
