@@ -63,7 +63,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
             price: item.price ? parseFloat(item.price.unit_amount / 100) : 0,
             currency: item.currency,
             description: item.description || item.price.product?.name, // Usar 'name' si no hay 'description'
-        }));
+        })); 
 
         const customerDetails = session.customer_details;
         console.log("Datos del cliente:", customerDetails);
