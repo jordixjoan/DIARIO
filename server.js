@@ -29,6 +29,9 @@ app.use(cors({
 
 // Ruta para manejar los eventos de Stripe
 app.post("/webhook", express.raw({ type: "application/json" }), async (req, res) => {
+    console.log("🔍 Tipo de body:", typeof req.body); 
+    console.log("🔍 Es buffer:", Buffer.isBuffer(req.body)); // DEBE SER TRUE
+
     console.log("🔔 Webhook recibido");
     const sig = req.headers["stripe-signature"];
     let event;
