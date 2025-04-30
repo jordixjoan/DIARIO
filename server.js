@@ -60,7 +60,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
         const lineItems = sessionWithLineItems.line_items.data.map(item => ({
             id: item.id,
             quantity: item.quantity,
-            price: item.price.unit_amount / 100, // Convertir a euros
+            price: typeof item.price?.unit_amount === "number" ? item.price.unit_amount / 100 : 0,
             currency: item.currency,
             description: item.description || item.price.product?.name, // Usar 'name' si no hay 'description'
         }));
