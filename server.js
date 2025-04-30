@@ -71,6 +71,28 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
         // Aquí puedes guardar los datos en tu base de datos o enviarlos donde los necesites
     }
 
+    const appsScriptUrl = "https://script.google.com/macros/s/AKfycbx8E2S-XxhTfOd2vpck-RWDBlYfjphCSHaErbKVztgwKCLsZ6zl-elfkKLcQToATFY/exec";
+
+    try {
+        await fetch(appsScriptUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "checkout.session.completed",
+            data: {
+              object: {
+                id: session.id,
+                customer_details: customerDetails,
+              },
+              line_items: lineItems,
+            },
+        }),
+     });
+     console.log("✅ Datos enviados correctamente a Apps Script");
+    } catch (error) {
+    console.error("❌ Error enviando datos a Apps Script:", error.message);
+    }
+
     res.status(200).json({ received: true });
 });
 
