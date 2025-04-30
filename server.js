@@ -70,7 +70,7 @@ app.post("/webhook", express.raw({ type: "application/json" }), async (req, res)
         console.log("Productos comprados:", lineItems);
         
         // Aquí puedes guardar los datos en tu base de datos o enviarlos donde los necesites
-        const appsScriptUrl = "https://script.google.com/macros/s/AKfycbzHkNdKq-mmJ69G0jGML_xCl_yOFSjogYEP0Bv_JHXghF3hrKt-ScsGdkgIvxlHLo8E/exec";
+        const appsScriptUrl = "https://script.google.com/macros/s/AKfycbzQ79JcHvzQwGxNhc8exNO3VUwS8vf6nsbG0olP4NUF2aEHEOwSO9CxBTxNVkc99L3U/exec";
 
         try {
             await fetch(appsScriptUrl, {
