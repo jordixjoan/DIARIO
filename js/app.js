@@ -55,7 +55,7 @@ async function procesarPago () {
     console.log(gastosEnvio);
 
     try {
-        const response = await fetch("https://api.diario.com/create-checkout-session", {
+        const response = await fetch("https://diario-mh0q.onrender.com/create-checkout-session", {
             method: "POST",
 
             headers: { "Content-Type": "application/json" },
@@ -298,7 +298,7 @@ function guardarCorreo() {
     submitBtn.disabled = true;
 
     // Enviar el correo al backend usando fetch
-    fetch("https://api.diario.com/guardar-correo", {
+    fetch("https://diario-mh0q.onrender.com/guardar-correo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email })
