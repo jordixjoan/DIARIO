@@ -55,7 +55,7 @@ async function procesarPago () {
     console.log(gastosEnvio);
 
     try {
-        const response = await fetch("https://diario-production-1.up.railway.app/create-checkout-session", {
+        const response = await fetch("https://api.diario.com/create-checkout-session", {
             method: "POST",
 
             headers: { "Content-Type": "application/json" },
@@ -298,7 +298,7 @@ function guardarCorreo() {
     submitBtn.disabled = true;
 
     // Enviar el correo al backend usando fetch
-    fetch("https://diario-production-1.up.railway.app/guardar-correo", {
+    fetch("https://api.diario.com/guardar-correo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email })
