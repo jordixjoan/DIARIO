@@ -259,8 +259,7 @@ function carritoHTML () {
     if (tieneSeBusca) {
         gastosEnvio += 5;
     }
-    console.log(articulosCarrito);
-    console.log(tieneSeBusca);
+    
 
     let gastos = gastosEnvio +  gastosGestion;
 
