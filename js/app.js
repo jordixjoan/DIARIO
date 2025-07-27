@@ -253,6 +253,15 @@ function carritoHTML () {
         gastosEnvio = totalCantidad > 0 ? Math.min(2.50 + (totalCantidad - 1) * 0.50, 3.50) : 0;
     }
 
+    // Comprobar si hay un artículo con título "SE BUSCA"
+    const tieneSeBusca = articulosCarrito.some(item => item.id === '101');
+    // ➕ Sumar 5 € si hay un "SE BUSCA"
+    if (tieneSeBusca) {
+        gastosEnvio += 5;
+    }
+    console.log(articulosCarrito);
+    console.log(tieneSeBusca);
+
     let gastos = gastosEnvio +  gastosGestion;
 
     let totalReal = total + gastos;
