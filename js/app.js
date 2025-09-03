@@ -54,6 +54,13 @@ async function procesarPago () {
     }
     console.log(gastosEnvio);
 
+    // Comprobar si hay un artículo con título "SE BUSCA"
+    const tieneSeBusca = articulosCarrito.some(item => item.id === '101');
+    // ➕ Sumar 5 € si hay un "SE BUSCA"
+    if (tieneSeBusca) {
+        gastosEnvio += 5;
+    }
+
     try {
         const response = await fetch("https://diario-mh0q.onrender.com/create-checkout-session", {
             method: "POST",
