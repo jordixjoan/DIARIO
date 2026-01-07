@@ -47,10 +47,12 @@ async function procesarPago () {
     console.log(paisSeleccionado);
     // Calcular gastos de envío
     if(paisSeleccionado == 'ES') {
-        gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;
+        if(articulosCarrito.some(item => item.id === '13') || articulosCarrito.some(item => item.id === '200')) {gastosEnvio = 2.50;}
+        else {gastosEnvio = totalCantidad > 0 ? Math.min(1.50 + (totalCantidad - 1) * 0.50, 2.50) : 0;}
     }
     else {
-        gastosEnvio = totalCantidad > 0 ? Math.min(2.50 + (totalCantidad - 1) * 0.50, 3.50) : 0;
+        if(articulosCarrito.some(item => item.id === '13') || articulosCarrito.some(item => item.id === '200')) {gastosEnvio = 3.50;}
+        else {gastosEnvio = totalCantidad > 0 ? Math.min(2.50 + (totalCantidad - 1) * 0.50, 3.50) : 0;}
     }
     console.log(gastosEnvio);
 
