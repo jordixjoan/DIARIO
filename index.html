@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="/css/skeleton.css">
         <link rel="stylesheet" href="/css/custom.css">
         
+        
     </head>
 
     <body>
@@ -71,18 +72,62 @@
 
             <div class="row">
                 <div class="four columns">
-                    <div class="card" style="height: 100%;">
-                        <img src="img/diarios-pack.png" class="imagen-curso u-full-width" 
-                        onmouseout="this.src='img/diarios-pack.png';"
-                        onmouseover="this.src='img/diarios-12.png';">
-                        <div class="info-card">
-                            <h4>Los 12 DIARIOS</h4>
-                            <p>Pack completo - Lo que vivo me hace artista</p>
-                            <p class="precio"> <span class="u-pull-right ">40€</span></p>
-                            <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="13">Agregar Al Carrito</a>
-                        </div>
-                    </div> <!--.card-->
-                </div>
+    <div class="card" style="height: 100%; position: relative;">
+
+        <!-- Etiqueta -->
+        <div style="
+            position:absolute;
+            top:10px;
+            left:10px;
+            background:#000;
+            color:white;
+            padding:8px 12px;
+            border-radius:20px;
+            font-size:12px;
+            font-weight:bold;
+            z-index:10;
+            letter-spacing:0.5px;
+        ">
+            ✨ COLABORADOR OFICIAL
+        </div>
+
+        <img src="img/diarios-pack.png"
+             class="imagen-curso u-full-width"
+             onmouseout="this.src='img/diarios-pack.png';"
+             onmouseover="this.src='img/diarios-12.png';">
+
+        <div class="info-card">
+
+            <h4>Los 12 DIARIOS</h4>
+
+            <div style="
+                background:#f7f7f7;
+                border-left:4px solid #000;
+                padding:10px;
+                margin-bottom:15px;
+                font-size:14px;
+                line-height:1.4;
+            ">
+                Compra este pack antes del <strong>16 de julio</strong> y tu nombre aparecerá en la
+                <strong>cartela oficial de agradecimientos</strong>
+                de la exposición.
+            </div>
+
+            <p>Pack completo - Lo que vivo me hace artista</p>
+
+            <p class="precio">
+                <span class="u-pull-right">40€</span>
+            </p>
+
+            <a href="#"
+               class="u-full-width button-primary button input agregar-carrito"
+               data-id="13">
+               Agregar Al Carrito
+            </a>
+
+        </div>
+    </div>
+</div>
             </div> <!--.row-->
 
             <div class="row" style="margin-left:20px;">
