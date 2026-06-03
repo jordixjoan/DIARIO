@@ -56,10 +56,12 @@ async function procesarPago () {
     }
     console.log(gastosEnvio);
 
-    // Comprobar si hay un artículo con título "SE BUSCA"
-    const tieneSeBusca = articulosCarrito.some(item => item.id === '101');
-    // ➕ Sumar 5 € si hay un "SE BUSCA"
-    if (tieneSeBusca) {
+    // Comprobar si hay un artículo lámina
+    const idsLamina = ['101', '102', '103', '104'];
+
+    const tieneLamina = articulosCarrito.some(item =>idsLamina.includes(item.id));
+    // ➕ Sumar 5 € si hay una lamina
+    if (tieneLamina) {
         gastosEnvio += 5;
     }
 
