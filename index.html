@@ -124,10 +124,66 @@
                data-id="13">
                Agregar Al Carrito
             </a>
-
         </div>
     </div>
 </div>
+
+
+            <div class="four columns">
+            <div class="card" style="height: 100%;">
+                <img src="img/libros-pack.png" class="imagen-curso u-full-width" 
+                onmouseout="this.src='img/libros-pack.png';"
+                onmouseover="this.src='img/firma fotos.png';">
+                <div class="info-card">
+                    <h4>Donación</h4>
+                    <p>Si quieres apoyar la exposición y los futuros proyectos,
+                    puedes hacer una aportación de la cantidad que desees.</p>
+                    <label for="cantidad-donacion" style="font-weight:bold;">
+    Introduce una cantidad
+</label>
+
+<div style="position:relative; margin-bottom:0px;">
+    <input
+        type="number"
+        id="cantidad-donacion"
+        value="5"
+        min="1"
+        step="1"
+        class="u-full-width"
+        placeholder="Cantidad"
+        style="
+            padding-right:45px;
+            font-size:18px;
+            height:46px;
+            border:2px solid #000;
+            border-radius:8px;
+        "
+    >
+
+    <span style="
+    position:absolute;
+    right:15px;
+    top:0;
+    height:46px;
+    line-height:46px;
+    font-size:20px;
+    font-weight:bold;
+    color:#000;
+    pointer-events:none;
+">€</span>
+</div>
+
+<button
+    id="boton-donacion"
+    class="u-full-width button-primary button input"
+    >
+    Donar al proyecto
+</button>
+
+                </div>
+            </div> <!--.card-->
+        </div>
+
             </div> <!--.row-->
 
             <div class="row" style="margin-left:20px;">
@@ -241,6 +297,7 @@
                     </div> <!--.card-->
                 </div>
             </div> <!--.row-->
+            
 
         </div>
 

@@ -346,3 +346,45 @@ function resetBtnNewsletter() {
     loader.style.display = "none";
     submitBtn.disabled = false;
 }
+
+const botonDonacion = document.querySelector('#boton-donacion');
+
+if (botonDonacion) {
+    botonDonacion.addEventListener('click', procesarDonacion);
+}
+
+async function procesarDonacion(e) {
+    e.preventDefault();
+
+    const cantidad = Number(document.querySelector('#cantidad-donacion').value);
+
+    if (!cantidad || cantidad < 1) {
+        alert('Introduce una cantidad válida.');
+        return;
+    }
+
+    try {
+        const response = await fetch("https://diario-mh0q.onrender.com/create-checkout-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                items: [
+                    {
+                        name: "Donación al proyecto DIARIO",
+                        quantity: 1,
+                        price: cantidad.toFixed(2)
+                    }
+                ]
+            }),
+        });
+
+        const data = await response.json();
+
+        if (data.url) {
+            window.location.href = data.url;
+        }
+    } catch (error) {
+        console.error("Error al procesar la donación:", error);
+        alert("Ha habido un error al procesar la donación.");
+    }
+}
