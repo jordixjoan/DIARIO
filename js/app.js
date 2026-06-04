@@ -368,6 +368,7 @@ async function procesarDonacion(e) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+                donation: true,
                 items: [
                     {
                         name: "Donación al proyecto DIARIO",

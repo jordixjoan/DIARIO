@@ -107,29 +107,39 @@ app.get('/', (req, res) => {
 // Endpoint para crear la sesión de pago con Stripe
 app.post("/create-checkout-session", async (req, res) => {
     try {
-        const { items } = req.body;
+        const { items, donation } = req.body;
+
         console.log(items);
+
         const lineItems = items.map(item => ({
             price_data: {
                 currency: "eur",
                 product_data: {
                     name: item.name,
                 },
-                unit_amount: Math.round(parseFloat(item.price.replace('€', '').replace(',', '.')) * 100), // Convertir a céntimos si el precio está en formato string
+                unit_amount: Math.round(
+                    parseFloat(
+                        String(item.price).replace('€', '').replace(',', '.')
+                    ) * 100
+                ),
             },
             quantity: item.quantity,
         }));
 
-        const session = await stripe.checkout.sessions.create({
+        const sessionConfig = {
             payment_method_types: ["card"],
             line_items: lineItems,
             mode: "payment",
             success_url: `${process.env.FRONTEND_URL}/success/pago`,
             cancel_url: `${process.env.FRONTEND_URL}/cancel`,
-            
-            // Solicitar información del cliente
-            billing_address_collection: "required", // Pide la dirección de facturación
-            shipping_address_collection: {
+        };
+
+        // SOLO pedir dirección para productos físicos
+        if (!donation) {
+
+            sessionConfig.billing_address_collection = "required";
+
+            sessionConfig.shipping_address_collection = {
                 allowed_countries: [
                     "ES", // España
                     "DE", // Alemania
@@ -147,13 +157,17 @@ app.post("/create-checkout-session", async (req, res) => {
                     "FI", // Finlandia
                     "PT"  // Portugal
                 ]
-            },                    
-            phone_number_collection: {
-                enabled: true, // Solicita el número de teléfono
-            }
-        });
+            };
+
+            sessionConfig.phone_number_collection = {
+                enabled: true,
+            };
+        }
+
+        const session = await stripe.checkout.sessions.create(sessionConfig);
 
         res.json({ url: session.url });
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Error al crear la sesión de pago" });
